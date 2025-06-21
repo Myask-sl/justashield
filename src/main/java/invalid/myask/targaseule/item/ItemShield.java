@@ -97,4 +97,16 @@ public class ItemShield extends Item implements IItemEntityRendered {
         }
         return false;
     }
+
+    public static ItemStack getShieldInUse(EntityPlayer alex) {
+        if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
+            if (alex.isUsingItem()) return alex.getItemInUse();
+        }
+        if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield)
+        ) {//|| (alex.getOffHandItem != null && alex.getOffHandItem().getItem() instanceof ItemShield)) {
+
+            if (alex.isSneaking() && Config.block_on_crouch) return alex.getHeldItem();
+        }
+        return null;
+    }
 }
