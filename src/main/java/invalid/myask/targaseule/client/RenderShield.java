@@ -125,7 +125,7 @@ public class RenderShield extends Render implements IItemRenderer {
             }
             case EQUIPPED_FIRST_PERSON -> {
                 if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ItemShield.isUsingShield(alex)) {
-                    float ticks = alex.getItemInUseDuration() + Minecraft.timer.renderPartialTicks;
+                    float ticks = alex.getItemInUseDuration() + Minecraft.getMinecraft().timer.renderPartialTicks;
                     if (ticks > 10) ticks = 10;
                     GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
                         USING_FP_POS.yCoord + (USING_FP_TICK_POS_DELTA.yCoord * ticks),
