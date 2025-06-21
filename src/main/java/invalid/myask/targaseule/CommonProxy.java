@@ -1,5 +1,6 @@
 package invalid.myask.targaseule;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -15,6 +16,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
         GameRegistry.registerItem(TargaSeule.SHIELD, "shield", TargaSeule.MODID);
+        MinecraftForge.EVENT_BUS.register(TargaEvent.instance);
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
