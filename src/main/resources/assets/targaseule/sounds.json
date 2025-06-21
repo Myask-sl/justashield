@@ -1,0 +1,8 @@
+{
+  "shield.block": {
+    "category": "neutral",
+    "sounds": [
+      "item/shield.block"
+    ]
+  }
+}
