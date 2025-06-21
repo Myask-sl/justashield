@@ -1,12 +1,12 @@
 package invalid.myask.targaseule;
 
+import net.minecraftforge.oredict.ShapedOreRecipe;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-
 
 public class CommonProxy {
 

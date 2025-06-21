@@ -1,6 +1,5 @@
 package invalid.myask.targaseule;
 
-import net.minecraft.item.Item;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,10 +9,15 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraft.item.Item;
 
 import invalid.myask.targaseule.item.ItemShield;
 
-@Mod(modid = TargaSeule.MODID, version = Tags.VERSION, name = TargaSeule.MODNAME, acceptedMinecraftVersions = "["+Tags.MINECRAFT_VERSION+"]")
+@Mod(
+    modid = TargaSeule.MODID,
+    version = Tags.VERSION,
+    name = TargaSeule.MODNAME,
+    acceptedMinecraftVersions = "[" + Tags.MINECRAFT_VERSION + "]")
 public class TargaSeule {
 
     public static final String MODID = Tags.MODID;
@@ -22,7 +26,7 @@ public class TargaSeule {
 
     public static final Item SHIELD = new ItemShield().setTextureName("shield").setUnlocalizedName("shield");
 
-    @SidedProxy(clientSide = Tags.MODGROUP+".ClientProxy", serverSide = Tags.MODGROUP+".CommonProxy")
+    @SidedProxy(clientSide = Tags.MODGROUP + ".ClientProxy", serverSide = Tags.MODGROUP + ".CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

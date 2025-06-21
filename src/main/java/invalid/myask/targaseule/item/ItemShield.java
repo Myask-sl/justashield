@@ -1,6 +1,5 @@
 package invalid.myask.targaseule.item;
 
-import invalid.myask.targaseule.Config;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -10,15 +9,17 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
 import invalid.myask.targaseule.client.IItemEntityRendered;
 
 public class ItemShield extends Item implements IItemEntityRendered {
+
     public static final int VANILLA_SHIELD_DURABILITY = 336;
     protected int damageThreshold = 3;
     ResourceLocation resLoc;
 
-    public ItemShield(){
+    public ItemShield() {
         setMaxStackSize(1);
         setMaxDamage(VANILLA_SHIELD_DURABILITY);
     }
@@ -60,7 +61,7 @@ public class ItemShield extends Item implements IItemEntityRendered {
     }
 
     @Override
-    public boolean setResLoc(String s){
+    public boolean setResLoc(String s) {
         resLoc = new ResourceLocation(s);
         return (resLoc != null);
     }

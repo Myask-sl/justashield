@@ -1,5 +1,7 @@
 package invalid.myask.targaseule.client;
 
+import java.util.Objects;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -14,8 +16,6 @@ import org.lwjgl.opengl.GL11;
 
 import invalid.myask.targaseule.TargaSeule;
 import invalid.myask.targaseule.item.ItemShield;
-
-import java.util.Objects;
 
 public class RenderShield extends Render implements IItemRenderer {
 
@@ -115,7 +115,7 @@ public class RenderShield extends Render implements IItemRenderer {
             case INVENTORY -> {
                 GL11.glTranslated(INV_POS.xCoord, INV_POS.yCoord, INV_POS.zCoord);
 
-                GL11.glRotatef(INV_ROLL, 0, 0,1);
+                GL11.glRotatef(INV_ROLL, 0, 0, 1);
                 GL11.glRotatef(INV_YAW, 0, 1, 0);
                 GL11.glRotatef(INV_PITCH, 1, 0, 0);
 
@@ -130,15 +130,14 @@ public class RenderShield extends Render implements IItemRenderer {
                     GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
                         USING_FP_POS.yCoord + (USING_FP_TICK_POS_DELTA.yCoord * ticks),
                         USING_FP_POS.zCoord + (USING_FP_TICK_POS_DELTA.zCoord * ticks));
-                    GL11.glRotatef(USING_FP_ROLL, 0, 0,1);
+                    GL11.glRotatef(USING_FP_ROLL, 0, 0, 1);
                     GL11.glRotatef(USING_FP_YAW, 0, 1, 0);
                     GL11.glRotatef(USING_FP_PITCH, 1, 0, 0);
-                }
-                else {
+                } else {
                     GL11.glTranslated(EQUIP_FP_POS.xCoord, EQUIP_FP_POS.yCoord, EQUIP_FP_POS.zCoord);
                     GL11.glRotatef(EQUIP_FP_YAW, 0, 1, 0);
                     GL11.glRotatef(EQUIP_FP_PITCH, 1, 0, 0);
-                    GL11.glRotatef(EQUIP_FP_ROLL, 0, 0,1);
+                    GL11.glRotatef(EQUIP_FP_ROLL, 0, 0, 1);
                 }
 
                 GL11.glScalef(EQUIP_FP_SCALE, EQUIP_FP_SCALE, EQUIP_FP_SCALE);
@@ -150,8 +149,7 @@ public class RenderShield extends Render implements IItemRenderer {
                     GL11.glRotatef(USING_3P_YAW, 0, 1, 0);
                     GL11.glRotatef(USING_3P_PITCH, 1, 0, 0);
                     GL11.glRotatef(USING_3P_ROLL, 0, 0, 1);
-                }
-                else {
+                } else {
                     GL11.glTranslated(EQUIP_3P_POS.xCoord, EQUIP_3P_POS.yCoord, EQUIP_3P_POS.zCoord);
                     GL11.glRotatef(EQUIP_3P_YAW, 0, 1, 0);
                     GL11.glRotatef(EQUIP_3P_PITCH, 1, 0, 0);

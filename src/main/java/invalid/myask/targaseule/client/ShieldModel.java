@@ -8,6 +8,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ShieldModel extends ModelBase {
+
     final ModelRenderer bb_main;
 
     public ShieldModel() {

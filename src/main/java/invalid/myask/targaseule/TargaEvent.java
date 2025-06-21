@@ -15,13 +15,17 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import invalid.myask.targaseule.item.ItemShield;
 
 public class TargaEvent {
+
     public static TargaEvent instance = new TargaEvent();
+
     @SubscribeEvent
-    public void handleTransitionsAndBlocks(LivingAttackEvent event) {//TODO: mixin EntityZombie##decreaseAirSupply instead
+    public void handleBlocking(LivingAttackEvent event) {// TODO: mixin EntityZombie##decreaseAirSupply
+                                                                     // instead
         if (!event.source.isDamageAbsolute() && !event.source.isUnblockable()
             && event.source instanceof EntityDamageSource eds
-            && event.entityLiving instanceof EntityPlayer vic && ItemShield.isUsingShield(vic)) {
-            ItemStack stack = vic.getItemInUse(); //oh hey, free Backhand compat...not.
+            && event.entityLiving instanceof EntityPlayer vic
+            && ItemShield.isUsingShield(vic)) {
+            ItemStack stack = vic.getItemInUse(); // oh hey, free Backhand compat...not.
 
             if (stack.getItem() instanceof ItemShield shield) {
                 Entity hitWith = eds.getSourceOfDamage();
@@ -31,9 +35,11 @@ public class TargaEvent {
                         + (Config.shield_pitch_matters ? dY * lookVec.yCoord : 0);
                 boolean fromAhead = dotProduct >= 0;
                 if (!fromAhead) {
-                    if (eds instanceof EntityDamageSourceIndirect indirSource && indirSource.isProjectile() && hitWith.ticksExisted < 5) {
-                        //hack for arrows and ghast fireballs, since they add delta-X to init pos in skeleton-used ctor that can make them start "past" you
-                        //ctors are not as mixinable as most things
+                    if (eds instanceof EntityDamageSourceIndirect indirSource && indirSource.isProjectile()
+                        && hitWith.ticksExisted < 5) {
+                        // hack for arrows and ghast fireballs, since they add delta-X to init pos in skeleton-used ctor
+                        // that can make them start "past" you
+                        // ctors are not as mixinable as most things
                         dotProduct = hitWith.motionX * lookVec.xCoord + hitWith.motionZ * lookVec.zCoord
                             + (Config.shield_pitch_matters ? hitWith.motionY * lookVec.yCoord : 0);
                         fromAhead = dotProduct >= 0;
@@ -58,7 +64,7 @@ public class TargaEvent {
                 if (fromAhead) { // within 90 degrees of facing, block
                     stack.damageItem(event.ammount >= shield.getMinDamageToDamage() ? MathHelper.ceiling_float_int(event.ammount) : 0, vic);
 
-                    vic.worldObj.playSoundAtEntity(vic, "undertow:shield.block", 1.0F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);
+                    vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.block", 1.0F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);
                     if (hitWith instanceof EntityArrow ea)
                         ea.shootingEntity = vic;
                     //p.worldObj.playSoundAtEntity(p,  "shield.break", 1.0F, p.worldObj.rand.nextFloat() * 0.2F + 0.9F);
