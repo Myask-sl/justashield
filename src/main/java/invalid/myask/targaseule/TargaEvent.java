@@ -19,8 +19,7 @@ public class TargaEvent {
     public static TargaEvent instance = new TargaEvent();
 
     @SubscribeEvent
-    public void handleBlocking(LivingAttackEvent event) {// TODO: mixin EntityZombie##decreaseAirSupply
-                                                                     // instead
+    public void handleBlocking(LivingAttackEvent event) {
         if (!event.source.isDamageAbsolute() && !event.source.isUnblockable()
             && event.source instanceof EntityDamageSource eds
             && event.entityLiving instanceof EntityPlayer vic
