@@ -29,7 +29,7 @@ public class Config {
             "block_on_crouch",
             "shield",
             block_on_crouch,
-            "Block on crouch like in Bedrock",
+            "Block on crouch like in Bedrock (works, doesn't look good)",
             "config.shield.block.on.crouch");
 
         if (configuration.hasChanged()) {
