@@ -1,5 +1,6 @@
 package invalid.myask.targaseule;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -15,7 +16,10 @@ public class CommonProxy {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+
         GameRegistry.registerItem(TargaSeule.SHIELD, "shield", TargaSeule.MODID);
+        TargaSeule.SHIELD.setCreativeTab(CreativeTabs.tabCombat);
+
         MinecraftForge.EVENT_BUS.register(TargaEvent.instance);
     }
 
