@@ -17,6 +17,8 @@ public class ItemShield extends Item implements IItemEntityRendered {
 
     public static final int VANILLA_SHIELD_DURABILITY = 336;
     protected int damageThreshold = 3;
+    protected float meleeBlock = Config.shield_default_melee_block;
+    protected float rangedBlock = Config.shield_default_ranged_block;
     ResourceLocation resLoc;
 
     public ItemShield() {
@@ -86,27 +88,17 @@ public class ItemShield extends Item implements IItemEntityRendered {
         return this;
     }
 
-    public static boolean isUsingShield(EntityPlayer alex) {
-        if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
-            if (alex.isUsingItem()) return true;
-        }
-        if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield)
-            ) {//|| (alex.getOffHandItem != null && alex.getOffHandItem().getItem() instanceof ItemShield)) {
-
-            if (alex.isSneaking() && Config.block_on_crouch) return true;
-        }
-        return false;
+    public void setRangedBlock(float toBe) {
+        rangedBlock = toBe;
+    }
+    public float getRangedBlock() {
+        return rangedBlock;
     }
 
-    public static ItemStack getShieldInUse(EntityPlayer alex) {
-        if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
-            if (alex.isUsingItem()) return alex.getItemInUse();
-        }
-        if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield)
-        ) {//|| (alex.getOffHandItem != null && alex.getOffHandItem().getItem() instanceof ItemShield)) {
-
-            if (alex.isSneaking() && Config.block_on_crouch) return alex.getHeldItem();
-        }
-        return null;
+    public void setMeleeBlock(float toBe) {
+        meleeBlock = toBe;
+    }
+    public float getMeleeBlock() {
+        return meleeBlock;
     }
 }

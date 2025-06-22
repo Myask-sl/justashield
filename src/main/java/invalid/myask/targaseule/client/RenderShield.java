@@ -2,6 +2,7 @@ package invalid.myask.targaseule.client;
 
 import java.util.Objects;
 
+import invalid.myask.targaseule.util.ShieldUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -124,7 +125,7 @@ public class RenderShield extends Render implements IItemRenderer {
                 bonk.bb_main.render(0.0625F);
             }
             case EQUIPPED_FIRST_PERSON -> {
-                if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ItemShield.isUsingShield(alex)) {
+                if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ShieldUtil.isUsingShield(alex)) {
                     float ticks = alex.getItemInUseDuration() + Minecraft.getMinecraft().timer.renderPartialTicks;
                     if (ticks > 10) ticks = 10;
                     GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
@@ -144,7 +145,7 @@ public class RenderShield extends Render implements IItemRenderer {
                 bonk.bb_main.render(0.0625F);
             }
             case EQUIPPED -> {
-                if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ItemShield.isUsingShield(alex)) {
+                if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ShieldUtil.isUsingShield(alex)) {
                     GL11.glTranslated(USING_3P_POS.xCoord, USING_3P_POS.yCoord, USING_3P_POS.zCoord);
                     GL11.glRotatef(USING_3P_YAW, 0, 1, 0);
                     GL11.glRotatef(USING_3P_PITCH, 1, 0, 0);
