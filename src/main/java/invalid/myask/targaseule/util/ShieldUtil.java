@@ -5,12 +5,12 @@ import invalid.myask.targaseule.item.ItemShield;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 
 public class ShieldUtil {
     public static boolean isUsingShield(EntityPlayer alex) {
@@ -66,13 +66,23 @@ public class ShieldUtil {
     }
 
     public static int getDisableTime(Entity damager) {
+        int cooldown = Config.default_shield_cooldown;
         if (damager instanceof EntityLivingBase attacker) {
             if (attacker.getHeldItem() != null && attacker.getHeldItem().getItem() instanceof ItemAxe) {
-                if (axeDisableRoll(attacker))
-                    return Config.axe_shield_cooldown;
+                boolean doCleave = Config.cleave_bonus_even_failed;
+                if (axeDisableRoll(attacker)) {
+                    cooldown = Config.axe_shield_cooldown;
+                    doCleave = true;
+                }
+                if (doCleave) {
+                    NBTTagList enchants = attacker.getHeldItem().getEnchantmentTagList();
+                    int cleavel = 0;//TODO: cleave.
+                    cooldown += cleavel * Config.axe_cleaving_cooldown;
+                }
+
             }
         }
-        return Config.default_shield_cooldown;
+        return cooldown;
     }
 
     public static boolean axeDisableRoll(EntityLivingBase attacker) {

@@ -15,6 +15,8 @@ public class Config {
 
     public static int default_shield_cooldown = 5;
     public static int axe_shield_cooldown = 100;
+    public static int axe_cleaving_cooldown = 10;
+    public static boolean cleave_bonus_even_failed = false;
 
     public static float axe_disable_chance_base = 0.25F;
     public static float axe_disable_chance_sprint_bonus = 0.75F; //so sayeth wiki
@@ -77,8 +79,24 @@ public class Config {
             axe_shield_cooldown,
             0,
             Integer.MAX_VALUE,
-            "Duration of shield cooldown on axe disabling hit, in ticks (20 ticks/s, 100 default vanilla)",
+            "Duration of shield cooldown on axe disabling hit, in ticks (20 ticks/s, 100 default vanilla, 32 combat tests)",
             "config.axe.shield.disable.time"
+        );
+        axe_cleaving_cooldown = configuration.getInt(
+            "axe_cleaving_cooldown",
+            "axe",
+            axe_cleaving_cooldown,
+            0,
+            Integer.MAX_VALUE,
+            "[Note this mod does not add a Cleaving axe enchant.] Duration of shield cooldown added per level of Cleaving on axe, in ticks (20 ticks/s, 10 default combat test)",
+            "config.axe.shield.disable.time.cleaving"
+        );
+        cleave_bonus_even_failed = configuration.getBoolean(
+            "cleave_bonus_even_failed",
+            "axe",
+            cleave_bonus_even_failed,
+            "[Note this mod does not add a Cleaving axe enchant.] Apply bonus cooldown from cleaving even if axe fails disable chance roll (nonvanilla)",
+            "config.axe.cleave.disable.on.fail"
         );
 
         axe_disable_chance_base = configuration.getFloat(

@@ -74,8 +74,9 @@ public class TargaEvent {
                                     || event.source.isProjectile()) ?
                                 1 - shield.getRangedBlock() : 1 - shield.getMeleeBlock());
                             event.setCanceled(true);
-                            if (newAmount > 0) {
-                                vic.attackEntityFrom(event.source.setDamageBypassesArmor(), newAmount);
+                            if (newAmount > 0.1) {
+                                vic.attackEntityFrom(event.source, newAmount); //cooldown should prevent further recursion
+                                //can't set unblockable as that also bypasses armor
                             }
                         }
                     }
