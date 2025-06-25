@@ -10,7 +10,7 @@ public class Config {
     public static boolean shield_knockback_enabled = true;
     public static boolean block_on_crouch = false;
 
-    public static float shield_default_melee_block = 2F / 3F;
+    public static float shield_default_melee_block = 1.0F; //2F / 3F;
     public static float shield_default_ranged_block = 1.0F;
     public static int vanilla_shield_durability = 336;
 
