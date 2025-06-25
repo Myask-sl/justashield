@@ -3,7 +3,7 @@
 	"modList": [{
 		"modid": "${modId}",
 		"name": "${modName}",
-		"description": "Just a vanilla shield.",
+		"description": "Just a vanilla shield. Incompatible with Undertow, as it's just the shield ripped out of it.",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
 		"url": "",
