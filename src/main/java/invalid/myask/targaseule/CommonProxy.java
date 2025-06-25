@@ -17,15 +17,15 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
-        GameRegistry.registerItem(TargaSeule.SHIELD, "shield", TargaSeule.MODID);
-        TargaSeule.SHIELD.setCreativeTab(CreativeTabs.tabCombat);
+        GameRegistry.registerItem(TargaItems.SHIELD, "shield", TargaSeule.MODID);
+        TargaItems.SHIELD.setCreativeTab(CreativeTabs.tabCombat);
 
         MinecraftForge.EVENT_BUS.register(TargaEvent.instance);
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
-        GameRegistry.addRecipe(new ShapedOreRecipe(TargaSeule.SHIELD,
+        GameRegistry.addRecipe(new ShapedOreRecipe(TargaItems.SHIELD,
             "#-#",
             "###",
             " # ",

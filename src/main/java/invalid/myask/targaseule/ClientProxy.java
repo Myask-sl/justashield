@@ -15,6 +15,6 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
 
-        MinecraftForgeClient.registerItemRenderer(TargaSeule.SHIELD, RenderShield.instance);
+        MinecraftForgeClient.registerItemRenderer(TargaItems.SHIELD, RenderShield.instance);
     }
 }

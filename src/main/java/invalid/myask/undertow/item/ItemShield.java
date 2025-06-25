@@ -16,13 +16,15 @@ import invalid.myask.undertow.client.IItemEntityRendered;
 public class ItemShield extends Item implements IItemEntityRendered {
 
     protected int damageThreshold = 3;
-    protected float meleeBlock = Config.shield_default_melee_block;
-    protected float rangedBlock = Config.shield_default_ranged_block;
+    protected float meleeBlock;
+    protected float rangedBlock;
     ResourceLocation resLoc;
 
     public ItemShield() {
         setMaxStackSize(1);
         setMaxDamage(Config.vanilla_shield_durability);
+        rangedBlock = Config.shield_default_ranged_block;
+        meleeBlock = Config.shield_default_melee_block;
     }
 
     @Override

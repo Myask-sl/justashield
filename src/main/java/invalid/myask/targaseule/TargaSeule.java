@@ -24,8 +24,6 @@ public class TargaSeule {
     public static final String MODNAME = Tags.MODNAME;
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    public static final Item SHIELD = new ItemShield().setTextureName("shield").setUnlocalizedName("shield");
-
     @SidedProxy(clientSide = Tags.MODGROUP + ".ClientProxy", serverSide = Tags.MODGROUP + ".CommonProxy")
     public static CommonProxy proxy;
 
