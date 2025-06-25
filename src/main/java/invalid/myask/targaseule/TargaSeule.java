@@ -40,15 +40,15 @@ public class TargaSeule {
         proxy.init(event);
     }
 
-    @Mod.EventHandler
+//    @Mod.EventHandler
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
-    public void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit(event);
-    }
+ //   public void postInit(FMLPostInitializationEvent event) {
+ //       proxy.postInit(event);
+ //   }
 
-    @Mod.EventHandler
+//    @Mod.EventHandler
     // register server commands in this event handler (Remove if not needed)
-    public void serverStarting(FMLServerStartingEvent event) {
-        proxy.serverStarting(event);
-    }
+//    public void serverStarting(FMLServerStartingEvent event) {
+//        proxy.serverStarting(event);
+//    }
 }
