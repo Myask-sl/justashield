@@ -9,8 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
-import invalid.myask.targaseule.item.ItemShield;
-import invalid.myask.targaseule.util.ShieldUtil;
+import invalid.myask.undertow.item.ItemShield;
+import invalid.myask.undertow.util.ShieldUtil;
 
 public class TargaEvent {
 

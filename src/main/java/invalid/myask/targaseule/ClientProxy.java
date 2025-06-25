@@ -4,7 +4,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 
-import invalid.myask.targaseule.client.RenderShield;
+import invalid.myask.undertow.client.RenderShield;
 
 public class ClientProxy extends CommonProxy {
 

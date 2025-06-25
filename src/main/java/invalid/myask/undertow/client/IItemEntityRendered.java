@@ -1,4 +1,4 @@
-package invalid.myask.targaseule.client;
+package invalid.myask.undertow.client;
 
 import net.minecraft.util.ResourceLocation;
 

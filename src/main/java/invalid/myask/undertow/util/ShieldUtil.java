@@ -1,7 +1,5 @@
-package invalid.myask.targaseule.util;
+package invalid.myask.undertow.util;
 
-import invalid.myask.targaseule.Config;
-import invalid.myask.targaseule.item.ItemShield;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -11,6 +9,9 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
+import invalid.myask.targaseule.Config;
+import invalid.myask.undertow.item.ItemShield;
 
 public class ShieldUtil {
     public static boolean isUsingShield(EntityPlayer alex) {

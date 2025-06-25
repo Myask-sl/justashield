@@ -1,8 +1,8 @@
-package invalid.myask.targaseule.client;
+package invalid.myask.undertow.client;
 
 import java.util.Objects;
+import org.lwjgl.opengl.GL11;
 
-import invalid.myask.targaseule.util.ShieldUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -13,10 +13,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.IItemRenderer;
 
-import org.lwjgl.opengl.GL11;
-
 import invalid.myask.targaseule.TargaSeule;
-import invalid.myask.targaseule.item.ItemShield;
+import invalid.myask.undertow.util.ShieldUtil;
 
 public class RenderShield extends Render implements IItemRenderer {
 

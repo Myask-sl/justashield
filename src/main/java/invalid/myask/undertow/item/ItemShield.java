@@ -1,4 +1,4 @@
-package invalid.myask.targaseule.item;
+package invalid.myask.undertow.item;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
-import invalid.myask.targaseule.client.IItemEntityRendered;
+import invalid.myask.undertow.client.IItemEntityRendered;
 
 public class ItemShield extends Item implements IItemEntityRendered {
 

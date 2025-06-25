@@ -11,7 +11,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.item.Item;
 
-import invalid.myask.targaseule.item.ItemShield;
+import invalid.myask.undertow.item.ItemShield;
 
 @Mod(
     modid = TargaSeule.MODID,
