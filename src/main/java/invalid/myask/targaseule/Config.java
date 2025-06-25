@@ -60,7 +60,7 @@ public class Config {
             shield_default_ranged_block,
             0,
             1.01F,
-            "What fraction of ranged damage to block. (0.66666667 for 1.9-1.10 behavior, else 1.0 vanilla)",
+            "What fraction of ranged damage to block. (1.0 vanilla)",
             "config.shield.block.fraction.ranged"
         );
         vanilla_shield_durability = configuration.getInt(
