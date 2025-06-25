@@ -12,6 +12,7 @@ public class Config {
 
     public static float shield_default_melee_block = 2F / 3F;
     public static float shield_default_ranged_block = 1.0F;
+    public static int vanilla_shield_durability = 336;
 
     public static int default_shield_cooldown = 5;
     public static int axe_shield_cooldown = 100;
@@ -62,6 +63,14 @@ public class Config {
             "What fraction of ranged damage to block. (0.66666667 for 1.9-1.10 behavior, else 1.0 vanilla)",
             "config.shield.block.fraction.ranged"
         );
+        vanilla_shield_durability = configuration.getInt(
+            "vanilla_shield_durability",
+            "shield",
+            vanilla_shield_durability,
+            1,
+            Integer.MAX_VALUE,
+            "Durability of default shield. (181 for 1.9pre value, 336 thereafter)"
+        );
 
         default_shield_cooldown = configuration.getInt(
             "default_shield_cooldown",
@@ -75,7 +84,7 @@ public class Config {
 
         axe_shield_cooldown = configuration.getInt(
             "axe_shield_cooldown",
-            "axe",
+            "shield.axe",
             axe_shield_cooldown,
             0,
             Integer.MAX_VALUE,
@@ -84,7 +93,7 @@ public class Config {
         );
         axe_cleaving_cooldown = configuration.getInt(
             "axe_cleaving_cooldown",
-            "axe",
+            "shield.axe",
             axe_cleaving_cooldown,
             0,
             Integer.MAX_VALUE,
@@ -93,7 +102,7 @@ public class Config {
         );
         cleave_bonus_even_failed = configuration.getBoolean(
             "cleave_bonus_even_failed",
-            "axe",
+            "shield.axe",
             cleave_bonus_even_failed,
             "[Note this mod does not add a Cleaving axe enchant.] Apply bonus cooldown from cleaving even if axe fails disable chance roll (nonvanilla)",
             "config.axe.cleave.disable.on.fail"
@@ -101,7 +110,7 @@ public class Config {
 
         axe_disable_chance_base = configuration.getFloat(
             "axe_disable_chance_base",
-            "axe",
+            "shield.axe",
             axe_disable_chance_base,
             Float.MIN_VALUE,
             Float.MAX_VALUE,
@@ -110,7 +119,7 @@ public class Config {
         );
         axe_disable_chance_sprint_bonus = configuration.getFloat(
             "axe_disable_chance_sprint_bonus",
-            "axe",
+            "shield.axe",
             axe_disable_chance_sprint_bonus,
             Float.MIN_VALUE,
             Float.MAX_VALUE,
@@ -118,7 +127,7 @@ public class Config {
             "config.axe.shield.disable.chance.sprint"); //dunno
         axe_disable_chance_efficiency_bonus = configuration.getFloat(
             "axe_disable_chance_sprint_bonus",
-            "axe",
+            "shield.axe",
             axe_disable_chance_efficiency_bonus,
             Float.MIN_VALUE,
             Float.MAX_VALUE,
