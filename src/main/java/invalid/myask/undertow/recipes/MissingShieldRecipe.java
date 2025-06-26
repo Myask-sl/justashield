@@ -7,12 +7,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class MissingShieldRecipe implements IRecipe {
     public static MissingShieldRecipe instance = new MissingShieldRecipe();
 
-    private static ItemStack output = new ItemStack(TargaItems.SHIELD);
+    private static final ItemStack output = new ItemStack(TargaItems.SHIELD);
     static {
         NBTTagCompound nbt = new NBTTagCompound();
         nbt.setBoolean("easter_egg", true);
@@ -25,7 +26,7 @@ public class MissingShieldRecipe implements IRecipe {
         "P B",
         'P', new ItemStack(Blocks.wool, 1, 10),
         'B', new ItemStack(Blocks.wool, 1, 15),
-        'S', TargaItems.SHIELD);
+        'S', new ItemStack(TargaItems.SHIELD, 1, OreDictionary.WILDCARD_VALUE));
     @Override
     public boolean matches(InventoryCrafting table, World w) {
         if (coreRecipe.matches(table, w)) {
