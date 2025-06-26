@@ -23,8 +23,8 @@ public class MissingShieldRecipe implements IRecipe {
         "B P",
         " S ",
         "P B",
-        'P', new ItemStack(Blocks.wool, 1, 5),
-        'B', new ItemStack(Blocks.wool, 1, 0),
+        'P', new ItemStack(Blocks.wool, 1, 10),
+        'B', new ItemStack(Blocks.wool, 1, 15),
         'S', TargaItems.SHIELD);
     @Override
     public boolean matches(InventoryCrafting table, World w) {
