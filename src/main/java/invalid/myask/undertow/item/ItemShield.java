@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
 import invalid.myask.undertow.client.IItemEntityRendered;
+import invalid.myask.undertow.util.ShieldUtil;
 
 public class ItemShield extends Item implements IItemEntityRendered {
 
@@ -38,7 +39,8 @@ public class ItemShield extends Item implements IItemEntityRendered {
 
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World worldIn, EntityPlayer player) {
-        player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+        if (ShieldUtil.disabledUntil(stack, player) <= worldIn.getTotalWorldTime())
+            player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
         return super.onItemRightClick(stack, worldIn, player);
     }
 
