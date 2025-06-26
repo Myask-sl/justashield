@@ -12,6 +12,9 @@ import net.minecraft.nbt.NBTTagList;
 
 import invalid.myask.targaseule.Config;
 import invalid.myask.undertow.item.ItemShield;
+import xonin.backhand.api.core.BackhandUtils;
+
+import static cpw.mods.fml.common.Loader.isModLoaded;
 
 public class ShieldUtil {
     public static boolean isUsingShield(EntityPlayer alex) {
@@ -30,10 +33,12 @@ public class ShieldUtil {
         if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
             if (alex.isUsingItem()) return alex.getItemInUse();
         }
-        if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield)
-        ) {//|| (alex.getOffHandItem != null && alex.getOffHandItem().getItem() instanceof ItemShield)) {
-
-            if (alex.isSneaking() && Config.block_on_crouch) return alex.getHeldItem();
+        if (Config.block_on_crouch && alex.isSneaking()) {
+            if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield))
+                return alex.getHeldItem();
+            if (isModLoaded("backhand") && BackhandUtils.getOffhandItem(alex) != null
+                && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
+                return BackhandUtils.getOffhandItem(alex);
         }
         return null;
     }
