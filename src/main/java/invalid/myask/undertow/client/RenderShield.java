@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.IItemRenderer;
 
+import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
 import invalid.myask.undertow.util.ShieldUtil;
 
@@ -107,7 +108,7 @@ public class RenderShield extends Render implements IItemRenderer {
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
         if (type == ItemRenderType.FIRST_PERSON_MAP) return;
         ResourceLocation rL = ((IItemEntityRendered) Objects.requireNonNull(item.getItem())).getResLoc();
-        if (rL == null) rL = QLY_MURREY_SABLE;
+        if (rL == null || (Config.enable_easter_egg && (item.getTagCompound() != null && item.getTagCompound().getBoolean("easter_egg")))) rL = QLY_MURREY_SABLE;
         GL11.glPushMatrix();
         this.bindTexture(rL);
         switch (type) {

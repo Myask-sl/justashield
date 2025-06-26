@@ -63,7 +63,7 @@ public class TargaEvent {
                             stack.damageItem(event.ammount >= shield.getMinDamageToDamage() ? MathHelper.ceiling_float_int(event.ammount) : 0, vic);
                             ShieldUtil.disableFor(ShieldUtil.getDisableTime(eds.getSourceOfDamage()), stack, vic);
 
-                            vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.block", 1.0F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);
+                            vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.block", 1.0F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);//TODO: whiff for purpure&sable
                             if (hitWith instanceof EntityArrow ea)
                                 ea.shootingEntity = vic;
                             //p.worldObj.playSoundAtEntity(p,  "shield.break", 1.0F, p.worldObj.rand.nextFloat() * 0.2F + 0.9F);

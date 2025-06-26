@@ -27,12 +27,7 @@ public class CommonProxy {
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
-        GameRegistry.addRecipe(new ShapedOreRecipe(TargaItems.SHIELD,
-            "#-#",
-            "###",
-            " # ",
-            '#', "plankWood",
-            '-', "ingotIron"));
+        TargaRecipes.register();
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)

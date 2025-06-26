@@ -23,6 +23,8 @@ public class Config {
     public static float axe_disable_chance_sprint_bonus = 0.75F; //so sayeth wiki
     public static float axe_disable_chance_efficiency_bonus = 0.05F; //known
 
+    public static boolean enable_easter_egg = true;
+
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
 
@@ -133,6 +135,14 @@ public class Config {
             Float.MAX_VALUE,
             "Axe disable chance bonus per Efficiency level (0-1 expected. 0.05 for vanilla)",
             "config.axe.shield.disable.chance.efficiency");
+
+        enable_easter_egg = configuration.getBoolean(
+            "enable_easter_egg",
+            "shield",
+            enable_easter_egg,
+            "Enable a joke.",
+            "config.shield.easter_egg"
+        );
 
         if (configuration.hasChanged()) {
             configuration.save();
