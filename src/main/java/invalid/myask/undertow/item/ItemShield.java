@@ -1,6 +1,9 @@
 package invalid.myask.undertow.item;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -103,5 +106,12 @@ public class ItemShield extends Item implements IItemEntityRendered {
     }
     public float getMeleeBlock() {
         return meleeBlock;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> linesOfTooltip, boolean advancedTooltips) {
+        super.addInformation(stack, player, linesOfTooltip, advancedTooltips);
+        if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("easter_egg"))
+            linesOfTooltip.add(I18n.format("tooltips.shield.easter_egg"));
     }
 }
