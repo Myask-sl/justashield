@@ -17,6 +17,22 @@ import xonin.backhand.api.core.BackhandUtils;
 import static cpw.mods.fml.common.Loader.isModLoaded;
 
 public class ShieldUtil {
+    public static Enchantment cleaving = null;
+
+    public static void checkForCleaving() {
+        for (Enchantment e: Enchantment.enchantmentsList) {
+            if (e.getName() != null && e.getName().contains("cleaving")) {
+                cleaving = e;
+                return;
+            }
+        }
+    }
+
+    public static int cleavingLevel(ItemStack axe) {
+        if (cleaving == null) return 0;
+        return EnchantmentHelper.getEnchantmentLevel(cleaving.effectId, axe);
+    }
+
     public static boolean isUsingShield(EntityPlayer alex) {
         if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
             if (alex.isUsingItem()) return true;
@@ -81,9 +97,7 @@ public class ShieldUtil {
                     doCleave = true;
                 }
                 if (doCleave) {
-                    NBTTagList enchants = attacker.getHeldItem().getEnchantmentTagList();
-                    int cleavel = 0;//TODO: cleave.
-                    cooldown += cleavel * Config.axe_cleaving_cooldown;
+                    cooldown += cleavingLevel(attacker.getHeldItem()) * Config.axe_cleaving_cooldown;
                 }
 
             }

@@ -10,6 +10,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+import invalid.myask.undertow.util.ShieldUtil;
+
 public class CommonProxy {
 
     // preInit "Run before anything else. Read your config, create blocks, items, etc, and register them with the
@@ -34,7 +36,9 @@ public class CommonProxy {
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
-   // public void postInit(FMLPostInitializationEvent event) {}
+    public void postInit(FMLPostInitializationEvent event) {
+        ShieldUtil.checkForCleaving();
+    }
 
     // register server commands in this event handler (Remove if not needed)
    // public void serverStarting(FMLServerStartingEvent event) {}
