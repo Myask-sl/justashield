@@ -21,6 +21,7 @@ public class ShieldUtil {
 
     public static void checkForCleaving() {
         for (Enchantment e: Enchantment.enchantmentsList) {
+            if (e == null) continue;
             if (e.getName() != null && e.getName().contains("cleaving")) {
                 cleaving = e;
                 return;
