@@ -16,6 +16,7 @@ public class TargaEvent {
 
     public static TargaEvent instance = new TargaEvent();
 
+    @SuppressWarnings("unused")
     @SubscribeEvent
     public void handleBlocking(LivingAttackEvent event) {
         if (!event.source.isDamageAbsolute() && !event.source.isUnblockable()

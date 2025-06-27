@@ -6,6 +6,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import invalid.myask.undertow.client.RenderShield;
 
+@SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy {
 
     // Override CommonProxy methods here, if you want a different behaviour on the client (e.g. registering renders).
