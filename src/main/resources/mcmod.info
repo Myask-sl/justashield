@@ -3,19 +3,19 @@
 	"modList": [{
 		"modid": "${modId}",
 		"name": "${modName}",
-		"description": "Just a vanilla shield. Incompatible with Undertow, as it's just the shield ripped out of it.",
+		"description": "Just a vanilla shield. Incompatible with Undertow. No mixins.",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
 		"url": "",
 		"updateUrl": "",
-		"authorList": ["Myask"],
-		"credits": "",
+		"authorList": ["Myask", "KSL"],
+		"credits": "USC Optical Sound Effects Library for CC0 sound effect[s]",
 		"logoFile": "",
 		"screenshots": [],
 		"parent": "",
 		"requiredMods": [],
 		"dependencies": ["backhand"],
 		"dependants": [],
-		"useDependencyInformation": false
+		"useDependencyInformation": true
 	}]
 }
