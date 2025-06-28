@@ -56,6 +56,12 @@ public class RenderShield extends Render implements IItemRenderer {
     private static final float USING_FP_PITCH = 200;
     private static final float USING_FP_ROLL = 80;
 
+    private static Vec3 CROUCHBLOCK_FP_POS = Vec3.createVectorHelper(0.75, 0.375, 0);
+
+    private static float CROUCHBLOCK_FP_YAW = -100;
+    private static float CROUCHBLOCK_FP_PITCH = 0;
+    private static float CROUCHBLOCK_FP_ROLL = 0;
+
     private static final float ENTITY_SCALE = 1F;
 
     public static ShieldModel bonk = new ShieldModel();
@@ -127,14 +133,22 @@ public class RenderShield extends Render implements IItemRenderer {
                 if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ShieldUtil.isUsingShield(alex)) {
                     float ticks = alex.getItemInUseDuration() + Minecraft.getMinecraft().timer.renderPartialTicks;
                     if (ticks > 10) ticks = 10;
-                    //if (alex.getItemInUse() != item) TODO
+                    if (alex.getItemInUse() != item) {
+                        GL11.glTranslated(CROUCHBLOCK_FP_POS.xCoord,
+                            CROUCHBLOCK_FP_POS.yCoord,
+                            CROUCHBLOCK_FP_POS.zCoord);
 
-                    GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
-                        USING_FP_POS.yCoord + (USING_FP_TICK_POS_DELTA.yCoord * ticks),
-                        USING_FP_POS.zCoord + (USING_FP_TICK_POS_DELTA.zCoord * ticks));
-                    GL11.glRotatef(USING_FP_ROLL, 0, 0, 1);
-                    GL11.glRotatef(USING_FP_YAW, 0, 1, 0);
-                    GL11.glRotatef(USING_FP_PITCH, 1, 0, 0);
+                        GL11.glRotatef(CROUCHBLOCK_FP_ROLL, 0, 0, 1);
+                        GL11.glRotatef(CROUCHBLOCK_FP_YAW, 0, 1, 0);
+                        GL11.glRotatef(CROUCHBLOCK_FP_PITCH, 1, 0, 0);
+                    } else {
+                        GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
+                            USING_FP_POS.yCoord + (USING_FP_TICK_POS_DELTA.yCoord * ticks),
+                            USING_FP_POS.zCoord + (USING_FP_TICK_POS_DELTA.zCoord * ticks));
+                        GL11.glRotatef(USING_FP_ROLL, 0, 0, 1);
+                        GL11.glRotatef(USING_FP_YAW, 0, 1, 0);
+                        GL11.glRotatef(USING_FP_PITCH, 1, 0, 0);
+                    }
                 } else {
                     GL11.glTranslated(EQUIP_FP_POS.xCoord, EQUIP_FP_POS.yCoord, EQUIP_FP_POS.zCoord);
                     GL11.glRotatef(EQUIP_FP_YAW, 0, 1, 0);
@@ -147,7 +161,6 @@ public class RenderShield extends Render implements IItemRenderer {
             }
             case EQUIPPED -> {
                 if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ShieldUtil.isUsingShield(alex)) {
-                    //if (alex.getItemInUse() != item) TODO
                     GL11.glTranslated(USING_3P_POS.xCoord, USING_3P_POS.yCoord, USING_3P_POS.zCoord);
                     GL11.glRotatef(USING_3P_YAW, 0, 1, 0);
                     GL11.glRotatef(USING_3P_PITCH, 1, 0, 0);
