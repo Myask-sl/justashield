@@ -44,7 +44,7 @@ public class RenderShield extends Render implements IItemRenderer {
     private static final float USING_3P_ROLL = 25;
 
     private static final Vec3 EQUIP_FP_POS = Vec3.createVectorHelper(0.0, 0, 1.3);
-    private static final float EQUIP_FP_YAW = 80;
+    private static final float EQUIP_FP_YAW = -100;
     private static final float EQUIP_FP_PITCH = 0;
     private static final float EQUIP_FP_ROLL = -10;
     private static final float EQUIP_FP_SCALE = 2F;

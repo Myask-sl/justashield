@@ -35,18 +35,22 @@ public class ShieldUtil {
     }
 
     public static boolean isUsingShield(EntityPlayer alex) {
-        if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
-            if (alex.isUsingItem()) return true;
+        if (alex.isUsingItem() && alex.getItemInUse().getItem() instanceof ItemShield) {
+            return true;
         }
-        if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield)
-         || (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
-            && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
-            && (!Config.prevent_block_if_other_hand_using ||
-            (!alex.isUsingItem() ||
-                (alex.getItemInUse().getItemUseAction() == EnumAction.block)
-                    && alex.getItemInUse().getItem() instanceof ItemSword)))) {
-
-            if (alex.isSneaking() && Config.block_on_crouch) return true;
+        if (Config.block_on_crouch && alex.isSneaking()) {
+            if (alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield
+                && (!ModLoaded.isBackHand() || alex.inventory.currentItem != BackhandUtils.getOffhandSlot(alex)))
+                //because backhand sets currentItem to backhandslot while rendering it
+                return true;
+            if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
+                && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
+                && (!Config.prevent_block_if_other_hand_using ||
+                (!alex.isUsingItem() ||
+                    (alex.getItemInUse().getItemUseAction() == EnumAction.block)
+                        && alex.getItemInUse().getItem() instanceof ItemSword))) {
+                return true;
+            }
         }
         return false;
     }
