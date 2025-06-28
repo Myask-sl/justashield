@@ -4,5 +4,11 @@
     "sounds": [
       "item/shield.block"
     ]
+  },
+  "shield.whiff": {
+    "category": "neutral",
+    "sounds": [
+      "item/shield.whiff"
+    ]
   }
 }
