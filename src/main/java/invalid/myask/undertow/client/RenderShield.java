@@ -56,9 +56,9 @@ public class RenderShield extends Render implements IItemRenderer {
     private static final float USING_FP_PITCH = 200;
     private static final float USING_FP_ROLL = 80;
 
-    private static Vec3 CROUCHBLOCK_FP_POS = Vec3.createVectorHelper(0.75, 0.375, 0);
+    private static Vec3 CROUCHBLOCK_FP_POS = Vec3.createVectorHelper(0, 0.25, 0.75);
 
-    private static float CROUCHBLOCK_FP_YAW = -100;
+    private static float CROUCHBLOCK_FP_YAW = -55;
     private static float CROUCHBLOCK_FP_PITCH = 0;
     private static float CROUCHBLOCK_FP_ROLL = 0;
 
