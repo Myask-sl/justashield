@@ -9,6 +9,7 @@ public class Config {
     public static boolean shield_pitch_matters = false;
     public static boolean shield_knockback_enabled = true;
     public static boolean block_on_crouch = false;
+    public static boolean prevent_block_if_other_hand_using = true;
 
     public static float shield_default_melee_block = 1.0F; //2F / 3F;
     public static float shield_default_ranged_block = 1.0F;
@@ -46,6 +47,13 @@ public class Config {
             block_on_crouch,
             "Block on crouch like in Bedrock (works, doesn't look good)",
             "config.shield.block.on.crouch");
+        prevent_block_if_other_hand_using = configuration.getBoolean(
+            "prevent_block_if_other_hand_using",
+            "shield",
+            prevent_block_if_other_hand_using,
+            "Prevent block if other hand is using an item (vanilla)",
+            "config.shield.block.if.other.hand.using"
+        );
 
         shield_default_melee_block = configuration.getFloat(
             "shield_default_melee_block",

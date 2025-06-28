@@ -65,7 +65,7 @@ public class TargaEvent {
                             ShieldUtil.disableFor(ShieldUtil.getDisableTime(eds.getSourceOfDamage()), stack, vic);
 
                             if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("easter_egg"))
-                                vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.whiff", 1.0F, vic.worldObj.rand.nextFloat() * 0.2F + 1.9F);
+                                vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.whiff", 1.3F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);
                             else
                                 vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.block", 1.0F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);
                             if (hitWith instanceof EntityArrow ea)

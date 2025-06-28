@@ -5,8 +5,10 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 
 import invalid.myask.targaseule.Config;
@@ -37,7 +39,12 @@ public class ShieldUtil {
             if (alex.isUsingItem()) return true;
         }
         if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield)
-        ) {//|| (alex.getOffHandItem != null && alex.getOffHandItem().getItem() instanceof ItemShield)) {
+         || (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
+            && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
+            && (!Config.prevent_block_if_other_hand_using ||
+            (!alex.isUsingItem() ||
+                (alex.getItemInUse().getItemUseAction() == EnumAction.block)
+                    && alex.getItemInUse().getItem() instanceof ItemSword)))) {
 
             if (alex.isSneaking() && Config.block_on_crouch) return true;
         }
@@ -46,7 +53,7 @@ public class ShieldUtil {
 
     public static ItemStack getShieldInUse(EntityPlayer alex) {
         if (alex.getItemInUse() != null && alex.getItemInUse().getItem() instanceof ItemShield) {
-            if (alex.isUsingItem()) return alex.getItemInUse();
+            return alex.getItemInUse();
         }
         if (Config.block_on_crouch && alex.isSneaking()) {
             if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield))
