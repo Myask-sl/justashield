@@ -36,8 +36,8 @@ public class TargaEvent {
                         if (!fromAhead) {
                             if (eds instanceof EntityDamageSourceIndirect indirSource && indirSource.isProjectile()
                                 && hitWith.ticksExisted < 5) {
-                                // hack for arrows and ghast fireballs, since they add delta-X to init pos in skeleton-used ctor
-                                // that can make them start "past" you
+                                // hack for arrows and ghast fireballs, since they add delta-X to init pos in
+                                // skeleton-used ctor that can make them start "past" you
                                 // ctors are not as mixinable as most things
                                 dotProduct = hitWith.motionX * lookVec.xCoord + hitWith.motionZ * lookVec.zCoord
                                     + (Config.shield_pitch_matters ? hitWith.motionY * lookVec.yCoord : 0);
@@ -61,7 +61,11 @@ public class TargaEvent {
                             }
                         }
                         if (fromAhead) { // within 90 degrees of facing, block
-                            stack.damageItem(event.ammount >= shield.getMinDamageToDamage() ? MathHelper.ceiling_float_int(event.ammount) : 0, vic);
+                            stack.damageItem(
+                                event.ammount >= shield.getMinDamageToDamage()
+                                    ? MathHelper.ceiling_float_int(event.ammount)
+                                    : 0,
+                                vic);
                             ShieldUtil.disableFor(ShieldUtil.getDisableTime(eds.getSourceOfDamage()), stack, vic);
 
                             if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("easter_egg"))
@@ -74,13 +78,15 @@ public class TargaEvent {
                             if (Config.shield_knockback_enabled && hitWith instanceof EntityLivingBase hitter) {
                                 hitter.knockBack(vic, 1.0F, -dX, -dZ);
                             }
-                            float newAmount = event.ammount * ((event.source instanceof EntityDamageSourceIndirect
-                                    || event.source.isProjectile()) ?
-                                1 - shield.getRangedBlock() : 1 - shield.getMeleeBlock());
+                            float newAmount = event.ammount
+                                * ((event.source instanceof EntityDamageSourceIndirect || event.source.isProjectile())
+                                    ? 1 - shield.getRangedBlock()
+                                    : 1 - shield.getMeleeBlock());
                             event.setCanceled(true);
                             if (newAmount > 0.1) {
-                                vic.attackEntityFrom(event.source, newAmount); //cooldown should prevent further recursion
-                                //can't set unblockable as that also bypasses armor
+                                vic.attackEntityFrom(event.source, newAmount);
+                                // cooldown should prevent further recursion
+                                // can't set unblockable as that also bypasses armor
                             }
                         }
                     }

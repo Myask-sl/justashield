@@ -20,8 +20,12 @@ import invalid.myask.undertow.util.ShieldUtil;
 public class RenderShield extends Render implements IItemRenderer {
 
     public static final RenderShield instance = new RenderShield();
-    protected static final ResourceLocation PROTEX = new ResourceLocation(TargaSeule.MODID, "textures/items/shield.png");
-    protected static final ResourceLocation QLY_MURREY_SABLE = new ResourceLocation(TargaSeule.MODID, "textures/items/shield_quarterly_murrey_and_sable.png");
+    protected static final ResourceLocation PROTEX = new ResourceLocation(
+        TargaSeule.MODID,
+        "textures/items/shield.png");
+    protected static final ResourceLocation QLY_MURREY_SABLE = new ResourceLocation(
+        TargaSeule.MODID,
+        "textures/items/shield_quarterly_murrey_and_sable.png");
 
     private static final Vec3 ITEM_POS = Vec3.createVectorHelper(0.0, 0.3, 0.0);
     private static final float ITEM_SCALE = 1F;
@@ -114,7 +118,8 @@ public class RenderShield extends Render implements IItemRenderer {
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
         if (type == ItemRenderType.FIRST_PERSON_MAP) return;
         ResourceLocation rL = ((IItemEntityRendered) Objects.requireNonNull(item.getItem())).getResLoc();
-        if (rL == null || (Config.enable_easter_egg && (item.getTagCompound() != null && item.getTagCompound().getBoolean("easter_egg")))) rL = QLY_MURREY_SABLE;
+        if (rL == null || (Config.enable_easter_egg && (item.getTagCompound() != null
+            && item.getTagCompound().getBoolean("easter_egg")))) rL = QLY_MURREY_SABLE;
         GL11.glPushMatrix();
         this.bindTexture(rL);
         switch (type) {
@@ -134,7 +139,8 @@ public class RenderShield extends Render implements IItemRenderer {
                     float ticks = alex.getItemInUseDuration() + Minecraft.getMinecraft().timer.renderPartialTicks;
                     if (ticks > 10) ticks = 10;
                     if (alex.getItemInUse() != item) {
-                        GL11.glTranslated(CROUCHBLOCK_FP_POS.xCoord,
+                        GL11.glTranslated(
+                            CROUCHBLOCK_FP_POS.xCoord,
                             CROUCHBLOCK_FP_POS.yCoord,
                             CROUCHBLOCK_FP_POS.zCoord);
 
@@ -142,7 +148,8 @@ public class RenderShield extends Render implements IItemRenderer {
                         GL11.glRotatef(CROUCHBLOCK_FP_YAW, 0, 1, 0);
                         GL11.glRotatef(CROUCHBLOCK_FP_PITCH, 1, 0, 0);
                     } else {
-                        GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
+                        GL11.glTranslated(
+                            USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
                             USING_FP_POS.yCoord + (USING_FP_TICK_POS_DELTA.yCoord * ticks),
                             USING_FP_POS.zCoord + (USING_FP_TICK_POS_DELTA.zCoord * ticks));
                         GL11.glRotatef(USING_FP_ROLL, 0, 0, 1);

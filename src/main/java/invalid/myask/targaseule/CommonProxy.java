@@ -2,7 +2,6 @@ package invalid.myask.targaseule;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -36,5 +35,5 @@ public class CommonProxy {
     }
 
     // register server commands in this event handler (Remove if not needed)
-   // public void serverStarting(FMLServerStartingEvent event) {}
+    // public void serverStarting(FMLServerStartingEvent event) {}
 }
