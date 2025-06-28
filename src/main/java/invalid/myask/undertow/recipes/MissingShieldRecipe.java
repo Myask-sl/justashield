@@ -1,6 +1,5 @@
 package invalid.myask.undertow.recipes;
 
-import invalid.myask.targaseule.TargaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -10,7 +9,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import invalid.myask.targaseule.TargaItems;
+
 public class MissingShieldRecipe implements IRecipe {
+
     public static MissingShieldRecipe instance = new MissingShieldRecipe();
 
     private static final ItemStack output = new ItemStack(TargaItems.SHIELD);
@@ -20,7 +22,8 @@ public class MissingShieldRecipe implements IRecipe {
         output.setTagCompound(nbt);
     }
 
-    static IRecipe coreRecipe = new ShapedOreRecipe(TargaItems.SHIELD,
+    static IRecipe coreRecipe = new ShapedOreRecipe(
+        TargaItems.SHIELD,
         "B P",
         " S ",
         "P B",
@@ -40,7 +43,7 @@ public class MissingShieldRecipe implements IRecipe {
     public ItemStack getCraftingResult(InventoryCrafting table) {
         ItemStack result = table.getStackInRowAndColumn(1,1).copy();
         NBTTagCompound nbt = result.getTagCompound();
-        if (nbt == null){
+        if (nbt == null) {
             nbt = new NBTTagCompound();
             result.setTagCompound(nbt);
         }

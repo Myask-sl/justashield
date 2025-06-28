@@ -15,12 +15,12 @@ import invalid.myask.targaseule.Config;
 import invalid.myask.undertow.item.ItemShield;
 import xonin.backhand.api.core.BackhandUtils;
 
-
 public class ShieldUtil {
+
     public static Enchantment cleaving = null;
 
     public static void checkForCleaving() {
-        for (Enchantment e: Enchantment.enchantmentsList) {
+        for (Enchantment e : Enchantment.enchantmentsList) {
             if (e == null) continue;
             if (e.getName() != null && e.getName().contains("cleaving")) {
                 cleaving = e;
@@ -41,7 +41,7 @@ public class ShieldUtil {
         if (Config.block_on_crouch && alex.isSneaking()) {
             if (alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield
                 && (!ModLoaded.isBackHand() || alex.inventory.currentItem != BackhandUtils.getOffhandSlot(alex)))
-                //because backhand sets currentItem to backhandslot while rendering it
+                // because backhand sets currentItem to backhandslot while rendering it
                 return true;
             if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
                 && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
@@ -78,10 +78,11 @@ public class ShieldUtil {
     }
 
     /**
-     * Sets "cooldown_end" to vic's worldtime + time, if greater than shield's current "coolown_end"
-     * @param time to disable for, from present. Negative values permitted but won't work.
+     * Sets "cooldown_end" to vic's worldtime + time, if greater than shield's current "cooldown_end"
+     *
+     * @param time   to disable for, from present. Negative values permitted but won't work.
      * @param shield Eponymous.
-     * @param vic got hit
+     * @param vic    got hit
      * @return Whether it set a new time.
      */
     public static boolean disableFor(long time, ItemStack shield, EntityLivingBase vic) {

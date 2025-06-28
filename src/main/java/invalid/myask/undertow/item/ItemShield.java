@@ -109,7 +109,8 @@ public class ItemShield extends Item implements IItemEntityRendered {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> linesOfTooltip, boolean advancedTooltips) {
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> linesOfTooltip,
+        boolean advancedTooltips) {
         super.addInformation(stack, player, linesOfTooltip, advancedTooltips);
         if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("easter_egg"))
             linesOfTooltip.add(I18n.format("tooltips.shield.easter_egg"));
