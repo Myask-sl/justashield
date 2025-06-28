@@ -127,6 +127,8 @@ public class RenderShield extends Render implements IItemRenderer {
                 if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ShieldUtil.isUsingShield(alex)) {
                     float ticks = alex.getItemInUseDuration() + Minecraft.getMinecraft().timer.renderPartialTicks;
                     if (ticks > 10) ticks = 10;
+                    //if (alex.getItemInUse() != item) TODO
+
                     GL11.glTranslated(USING_FP_POS.xCoord + (USING_FP_TICK_POS_DELTA.xCoord * ticks),
                         USING_FP_POS.yCoord + (USING_FP_TICK_POS_DELTA.yCoord * ticks),
                         USING_FP_POS.zCoord + (USING_FP_TICK_POS_DELTA.zCoord * ticks));
@@ -145,6 +147,7 @@ public class RenderShield extends Render implements IItemRenderer {
             }
             case EQUIPPED -> {
                 if (data.length >= 2 && data[1] instanceof EntityPlayer alex && ShieldUtil.isUsingShield(alex)) {
+                    //if (alex.getItemInUse() != item) TODO
                     GL11.glTranslated(USING_3P_POS.xCoord, USING_3P_POS.yCoord, USING_3P_POS.zCoord);
                     GL11.glRotatef(USING_3P_YAW, 0, 1, 0);
                     GL11.glRotatef(USING_3P_PITCH, 1, 0, 0);

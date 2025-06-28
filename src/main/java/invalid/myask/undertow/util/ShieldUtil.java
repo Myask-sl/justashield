@@ -8,13 +8,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 
 import invalid.myask.targaseule.Config;
 import invalid.myask.undertow.item.ItemShield;
 import xonin.backhand.api.core.BackhandUtils;
 
-import static cpw.mods.fml.common.Loader.isModLoaded;
 
 public class ShieldUtil {
     public static Enchantment cleaving = null;
@@ -53,7 +51,7 @@ public class ShieldUtil {
         if (Config.block_on_crouch && alex.isSneaking()) {
             if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield))
                 return alex.getHeldItem();
-            if (isModLoaded("backhand") && BackhandUtils.getOffhandItem(alex) != null
+            if (ModLoaded.isBackHand() && BackhandUtils.getOffhandItem(alex) != null
                 && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
                 return BackhandUtils.getOffhandItem(alex);
         }

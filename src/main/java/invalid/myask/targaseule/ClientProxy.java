@@ -1,9 +1,11 @@
 package invalid.myask.targaseule;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.client.MinecraftForgeClient;
 
-
+import invalid.myask.targaseule.client.ShowCrouchBlockEvent;
 import invalid.myask.undertow.client.RenderShield;
 
 @SuppressWarnings("unused")
@@ -17,5 +19,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(event);
 
         MinecraftForgeClient.registerItemRenderer(TargaItems.SHIELD, RenderShield.instance);
+
+        MinecraftForge.EVENT_BUS.register(ShowCrouchBlockEvent.instance);
     }
 }
