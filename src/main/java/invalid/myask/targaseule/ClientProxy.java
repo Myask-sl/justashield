@@ -19,6 +19,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(event);
 
         MinecraftForgeClient.registerItemRenderer(TargaItems.SHIELD, RenderShield.instance);
+        MinecraftForgeClient.registerItemRenderer(TargaItems.OLD_SHIELD, RenderShield.instance);
 
         MinecraftForge.EVENT_BUS.register(ShowCrouchBlockEvent.instance);
     }

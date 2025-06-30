@@ -20,6 +20,8 @@ public class CommonProxy {
 
         GameRegistry.registerItem(TargaItems.SHIELD, "shield", TargaSeule.MODID);
         TargaItems.SHIELD.setCreativeTab(CreativeTabs.tabCombat);
+        GameRegistry.registerItem(TargaItems.OLD_SHIELD, "old_shield", TargaSeule.MODID);
+        TargaItems.OLD_SHIELD.setCreativeTab(CreativeTabs.tabCombat);
 
         MinecraftForge.EVENT_BUS.register(TargaEvent.instance);
     }
