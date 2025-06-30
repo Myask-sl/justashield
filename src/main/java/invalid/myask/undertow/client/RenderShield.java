@@ -224,7 +224,7 @@ public class RenderShield extends Render implements IItemRenderer {
                     pattern;
                 char c = entry.charAt(0);
                 int colorIndex = "0123456789ABCDEF?$".indexOf(c),
-                    tincture;
+                    tincture = -1;
                 if (colorIndex == -1) colorIndex = "0123456789abcdef?".indexOf(c);
                 if (colorIndex >= 0 && colorIndex <= 17) {
                     if (colorIndex == 17) {
@@ -232,12 +232,12 @@ public class RenderShield extends Render implements IItemRenderer {
                         else tincture = 0;
                     }
                     else tincture = MapColor.getMapColorForBlockColored(colorIndex).colorValue;
-                    int i = entry.indexOf('.');
-                    if (entry.length() == i + 1) i = -1;
-                    pattern = i == -1 ? "base" : entry.substring(i + 1);
-                    this.bindTexture(heraldryTextures.get(pattern));
-                    bonk.paintShield(0.0625F, tincture);
                 }
+                int i = entry.indexOf('.');
+                if (entry.length() == i + 1) i = -1;
+                pattern = i == -1 ? "base" : entry.substring(i + 1);
+                this.bindTexture(heraldryTextures.get(pattern));
+                bonk.paintShield(0.0625F, tincture);
             }
         }
     }
