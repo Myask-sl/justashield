@@ -23,12 +23,16 @@ public class ItemShield extends Item implements IItemEntityRendered {
     protected float meleeBlock;
     protected float rangedBlock;
     ResourceLocation resLoc;
+    protected int cooldown;
+    protected int warmup;
 
     public ItemShield() {
         setMaxStackSize(1);
         setMaxDamage(Config.vanilla_shield_durability);
         rangedBlock = Config.shield_default_ranged_block;
         meleeBlock = Config.shield_default_melee_block;
+        cooldown = Config.default_shield_cooldown;
+        warmup = Config.default_shield_warmup;
     }
 
     @Override
@@ -106,6 +110,17 @@ public class ItemShield extends Item implements IItemEntityRendered {
     }
     public float getMeleeBlock() {
         return meleeBlock;
+    }
+
+    public void setBaseCooldown(int toBe) { cooldown = toBe; }
+    public int getBaseCooldown() { return cooldown; }
+
+
+    public void setBaseWarmup(int toBe) { warmup = toBe; }
+    public int getBaseWarmup() { return warmup; }
+
+    public List<String> getHeraldry (ItemStack stack) {
+        return null;
     }
 
     @Override

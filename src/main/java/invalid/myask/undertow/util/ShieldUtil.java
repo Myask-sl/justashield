@@ -16,7 +16,7 @@ import invalid.myask.undertow.item.ItemShield;
 import xonin.backhand.api.core.BackhandUtils;
 
 public class ShieldUtil {
-
+    public static final char[] hexadecimal_digits =  {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
     public static Enchantment cleaving = null;
 
     public static void checkForCleaving() {
@@ -98,19 +98,21 @@ public class ShieldUtil {
         return true;
     }
 
-    public static int getDisableTime(Entity damager) {
+    public static int getDisableTime(Entity damager, ItemStack stack) {
         int cooldown = Config.default_shield_cooldown;
-        if (damager instanceof EntityLivingBase attacker) {
-            if (attacker.getHeldItem() != null && attacker.getHeldItem().getItem() instanceof ItemAxe) {
-                boolean doCleave = Config.cleave_bonus_even_failed;
-                if (axeDisableRoll(attacker)) {
-                    cooldown = Config.axe_shield_cooldown;
-                    doCleave = true;
+        if (stack != null && stack.getItem() instanceof ItemShield shield) {
+            cooldown = shield.getBaseCooldown();
+            if (damager instanceof EntityLivingBase attacker) {
+                if (attacker.getHeldItem() != null && attacker.getHeldItem().getItem() instanceof ItemAxe) {
+                    boolean doCleave = Config.cleave_bonus_even_failed;
+                    if (axeDisableRoll(attacker)) {
+                        cooldown = Config.axe_shield_cooldown;
+                        doCleave = true;
+                    }
+                    if (doCleave) {
+                        cooldown += cleavingLevel(attacker.getHeldItem()) * Config.axe_cleaving_cooldown;
+                    }
                 }
-                if (doCleave) {
-                    cooldown += cleavingLevel(attacker.getHeldItem()) * Config.axe_cleaving_cooldown;
-                }
-
             }
         }
         return cooldown;

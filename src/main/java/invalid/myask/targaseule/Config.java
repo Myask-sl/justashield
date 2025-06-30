@@ -16,6 +16,7 @@ public class Config {
     public static int vanilla_shield_durability = 336;
 
     public static int default_shield_cooldown = 5;
+    public static int default_shield_warmup = 5;
     public static int axe_shield_cooldown = 100;
     public static int axe_cleaving_cooldown = 10;
     public static boolean cleave_bonus_even_failed = false;
@@ -24,6 +25,9 @@ public class Config {
     public static float axe_disable_chance_sprint_bonus = 0.75F; // so sayeth wiki
     public static float axe_disable_chance_efficiency_bonus = 0.05F; // known
 
+    public static boolean fix_gimbal_lock = true;
+    public static boolean old_shield_old_stats = true;
+    public static boolean old_shield_enable = true;
     public static boolean enable_easter_egg = true;
 
     public static void synchronizeConfiguration(File configFile) {
@@ -76,7 +80,8 @@ public class Config {
             vanilla_shield_durability,
             1,
             Integer.MAX_VALUE,
-            "Durability of default shield. (181 for 1.9pre value, 336 thereafter)");
+            "Durability of default shield. (181 for 1.9pre value, 336 thereafter)",
+            "config.shield.durability.default");
 
         default_shield_cooldown = configuration.getInt(
             "default_shield_cooldown",
@@ -86,6 +91,14 @@ public class Config {
             Integer.MAX_VALUE,
             "Duration of shield cooldown on hit, in ticks (20 ticks per second. 5 default vanilla, was briefly 10)",
             "config.shield.cooldown.default");
+        default_shield_warmup = configuration.getInt(
+            "default_shield_warmup",
+            "shield",
+            default_shield_warmup,
+            0,
+            Integer.MAX_VALUE,
+            "Duration of shield warmup before blocking can happen, in ticks (20 ticks per second)",
+            "config.shield.warmup.default");//TODO: implement
 
         axe_shield_cooldown = configuration.getInt(
             "axe_shield_cooldown",
@@ -135,6 +148,27 @@ public class Config {
             "Axe disable chance bonus per Efficiency level (0-1 expected. 0.05 for vanilla)",
             "config.axe.shield.disable.chance.efficiency");
 
+        old_shield_old_stats = configuration.getBoolean(
+            "old_shield_old_stats",
+            "shield",
+            old_shield_old_stats,
+            "Whether to make 'old shields' work like very early snapshot.",
+            "config.shield.old.stats.snapshot"
+        );
+        old_shield_enable = configuration.getBoolean(
+            "old_shield_enable",
+            "shield",
+            old_shield_enable,
+            "Enable old woollen colored shields",
+            "config.shield.old.enable"
+        );
+        fix_gimbal_lock = configuration.getBoolean(
+            "fix_gimbal_lock",
+            "shield",
+            fix_gimbal_lock,
+            "Fix bug where looking straight up or down makes blocking impossible",
+            "config.shield.bug.gimbal.lock.fix"
+        );
         enable_easter_egg = configuration.getBoolean(
             "enable_easter_egg",
             "shield",

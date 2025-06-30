@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.realms.RealmsMth;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
@@ -29,6 +30,12 @@ public class TargaEvent {
                     if (stack.getItem() instanceof ItemShield shield) {
                         Entity hitWith = eds.getSourceOfDamage();
                         Vec3 lookVec = vic.getLookVec();
+                        if (Config.fix_gimbal_lock && lookVec.xCoord == 0 && lookVec.zCoord == 0) {
+                            float recall = vic.rotationPitch;
+                            vic.rotationPitch = RealmsMth.clamp(vic.rotationPitch, -89.9F, 89.9F);
+                            lookVec = vic.getLookVec();
+                            vic.rotationPitch = recall;
+                        }
                         double dX = hitWith.posX - vic.posX, dY = hitWith.posY - vic.posY, dZ = hitWith.posZ - vic.posZ,
                             dotProduct = dX * lookVec.xCoord + dZ * lookVec.zCoord
                                 + (Config.shield_pitch_matters ? dY * lookVec.yCoord : 0);
@@ -66,7 +73,7 @@ public class TargaEvent {
                                     ? MathHelper.ceiling_float_int(event.ammount)
                                     : 0,
                                 vic);
-                            ShieldUtil.disableFor(ShieldUtil.getDisableTime(eds.getSourceOfDamage()), stack, vic);
+                            ShieldUtil.disableFor(ShieldUtil.getDisableTime(eds.getSourceOfDamage(), stack), stack, vic);
 
                             if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("easter_egg"))
                                 vic.worldObj.playSoundAtEntity(vic, "targaseule:shield.whiff", 1.3F, vic.worldObj.rand.nextFloat() * 0.2F + 0.9F);

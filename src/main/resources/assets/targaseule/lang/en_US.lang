@@ -1,2 +1,19 @@
 item.shield.name=Shield
+item.shield.white.name=Old White Shield
+item.shield.orange.name=Old Orange Shield
+item.shield.magenta.name=Old Magenta Shield
+item.shield.lightBlue.name=Old Light Blue Shield
+item.shield.yellow.name=Old Yellow Shield
+item.shield.lime.name=Old Lime Shield
+item.shield.pink.name=Old Pink Shield
+item.shield.gray.name=Old Gray Shield
+item.shield.silver.name=Old Silver Shield
+item.shield.cyan.name=Old Cyan Shield
+item.shield.purple.name=Old Purple Shield
+item.shield.blue.name=Old Blue Shield
+item.shield.brown.name=Old Brown Shield
+item.shield.green.name=Old Green Shield
+item.shield.red.name=Old Red Shield
+item.shield.black.name=Old Black Shield
+
 tooltips.shield.easter_egg=Quarterly Purpure and Sable is just Unbannerly
