@@ -42,11 +42,13 @@ public class ShieldModel extends ModelBase {
             y = 10 * scale,
             z = -1 * scale - 0.0001;
         Tessellator.instance.startDrawingQuads();
-        Tessellator.instance.setColorOpaque((tincture >> 16) & 0xFF, (tincture >> 8) & 0xFF, tincture & 0xFF);
-        Tessellator.instance.addVertexWithUV(-x, -y, z,  LEFT,    TOP);
-        Tessellator.instance.addVertexWithUV( x, -y, z, RIGHT,    TOP);
-        Tessellator.instance.addVertexWithUV( x,  y, z, RIGHT, BOTTOM);
-        Tessellator.instance.addVertexWithUV(-x,  y, z,  LEFT, BOTTOM);
+        if (tincture != -1)
+            Tessellator.instance.setColorOpaque((tincture >> 16) & 0xFF, (tincture >> 8) & 0xFF, tincture & 0xFF);
+        Tessellator.instance.setNormal(0, 0, -1);
+        Tessellator.instance.addVertexWithUV(-x,  y, z,  LEFT,    TOP);
+        Tessellator.instance.addVertexWithUV( x,  y, z, RIGHT,    TOP);
+        Tessellator.instance.addVertexWithUV( x, -y, z, RIGHT, BOTTOM);
+        Tessellator.instance.addVertexWithUV(-x, -y, z,  LEFT, BOTTOM);
         Tessellator.instance.draw();
     }
 }
