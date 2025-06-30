@@ -30,7 +30,7 @@ public class ItemOldShield extends ItemShield {
                 if (tag.hasKey("colorIndex")) {
                     int colorIndex = tag.getInteger("colorIndex");
                     if (colorIndex >= 0 && colorIndex < field_150923_a.length)
-                        resultingName += "." + field_150923_a[colorIndex];
+                        resultingName += "." + field_150923_a[15 - colorIndex];
                 }
             }
         }
