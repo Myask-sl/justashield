@@ -19,8 +19,8 @@ import net.minecraftforge.client.IItemRenderer;
 
 import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
-import invalid.myask.undertow.util.ShieldUtil;
 import invalid.myask.undertow.item.ItemShield;
+import invalid.myask.undertow.util.ShieldUtil;
 
 public class RenderShield extends Render implements IItemRenderer {
 
@@ -32,22 +32,20 @@ public class RenderShield extends Render implements IItemRenderer {
         TargaSeule.MODID,
         "textures/items/shield_quarterly_murrey_and_sable.png");
     public static HashMap<String, ResourceLocation> heraldryTextures = new HashMap<>();
-    public static final String[] heraldryKeys = {"base"}; //,
-    //"stripe_bottom", "stripe_top", "stripe_left", "stripe_right", "stripe_center", "stripe_middle",
-    //"stripe_downright", "stripe_downleft", "small_stripes", "cross", "straight_cross", "diagonal_left",
-    //"diagonal_right", "diagonal_up_left", "diagonal_up_right", "half_vertical", "half_vertical_right",
-    //"half_horizontal", "half_horizontal_bottom", "square_bottom_left", "square_bottom_right", "square_top_left",
-    //"square_top_right", "triangle_bottom", "triangle_top", "triangles_bottom", "triangles_top", "circle", "rhombus",
-    //"border", "curly_border", "bricks", "gradient", "gradient_up",
-    //"creeper", "skull", "flower", "mojang", "globe", "piglin", "flow", "guster"};
+    public static final String[] heraldryKeys = { "base" }; // ,
+    // "stripe_bottom", "stripe_top", "stripe_left", "stripe_right", "stripe_center", "stripe_middle",
+    // "stripe_downright", "stripe_downleft", "small_stripes", "cross", "straight_cross", "diagonal_left",
+    // "diagonal_right", "diagonal_up_left", "diagonal_up_right", "half_vertical", "half_vertical_right",
+    // "half_horizontal", "half_horizontal_bottom", "square_bottom_left", "square_bottom_right", "square_top_left",
+    // "square_top_right", "triangle_bottom", "triangle_top", "triangles_bottom", "triangles_top", "circle", "rhombus",
+    // "border", "curly_border", "bricks", "gradient", "gradient_up",
+    // "creeper", "skull", "flower", "mojang", "globe", "piglin", "flow", "guster"};
     // Note: "mojang" is used for API compatibility with vanilla/EFR banner patterns.
     // Mojang is TM Mojang. We are unaffiliated with Mojang.
 
-
-    static { //initHeraldry()
-        for (String s: heraldryKeys) {
-            heraldryTextures.put(s, new ResourceLocation(TargaSeule.MODID,
-                "textures/items/heraldry/" + s + ".png"));
+    static { // initHeraldry()
+        for (String s : heraldryKeys) {
+            heraldryTextures.put(s, new ResourceLocation(TargaSeule.MODID, "textures/items/heraldry/" + s + ".png"));
         }
     }
 
@@ -104,7 +102,7 @@ public class RenderShield extends Render implements IItemRenderer {
         GL11.glScalef(ENTITY_SCALE, ENTITY_SCALE, ENTITY_SCALE);
         if (entity instanceof EntityItem eItem && eItem.getEntityItem() != null && eItem.getEntityItem().getItem() instanceof ItemShield)
             shareRender(eItem.getEntityItem());
-        else //fallback
+        else // fallback
             bonk.render(entity, 0, 0, 0, 0, fracTick, 0.0625F);
         GL11.glPopMatrix();
     }
@@ -209,7 +207,7 @@ public class RenderShield extends Render implements IItemRenderer {
                 GL11.glScalef(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
             }
         }
-        shareRender (item);
+        shareRender(item);
         GL11.glPopMatrix();
     }
 
@@ -228,8 +226,7 @@ public class RenderShield extends Render implements IItemRenderer {
                     if (colorIndex == 17) {
                         if (entry.length() >= 6) tincture = Integer.parseInt(heraldry.get(0).substring(1, 6), 16);
                         else tincture = 0;
-                    }
-                    else tincture = MapColor.getMapColorForBlockColored(colorIndex).colorValue;
+                    } else tincture = MapColor.getMapColorForBlockColored(colorIndex).colorValue;
                 }
                 int i = entry.indexOf('.');
                 if (entry.length() == i + 1) i = -1;

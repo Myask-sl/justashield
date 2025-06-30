@@ -6,17 +6,18 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
-
-import invalid.myask.targaseule.TargaItems;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import invalid.myask.targaseule.TargaItems;
+
 public class OldShieldRecipe implements IRecipe {
+
     protected final int colorIndex;
     protected final ItemStack output;
     protected final IRecipe baseRecipe;
 
-    public OldShieldRecipe() {this(0);}
+    public OldShieldRecipe() { this(0); }
     public OldShieldRecipe(int colorIndex) {
         this.colorIndex = colorIndex;
         this.output = new ItemStack(TargaItems.OLD_SHIELD);

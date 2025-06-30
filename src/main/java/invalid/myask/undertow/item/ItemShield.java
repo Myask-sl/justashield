@@ -115,11 +115,10 @@ public class ItemShield extends Item implements IItemEntityRendered {
     public void setBaseCooldown(int toBe) { cooldown = toBe; }
     public int getBaseCooldown() { return cooldown; }
 
-
     public void setBaseWarmup(int toBe) { warmup = toBe; }
     public int getBaseWarmup() { return warmup; }
 
-    public List<String> getHeraldry (ItemStack stack) {
+    public List<String> getHeraldry(ItemStack stack) {
         return null;
     }
 

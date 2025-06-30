@@ -98,7 +98,7 @@ public class Config {
             0,
             Integer.MAX_VALUE,
             "Duration of shield warmup before blocking can happen, in ticks (20 ticks per second)",
-            "config.shield.warmup.default");//TODO: implement
+            "config.shield.warmup.default");// TODO: implement
 
         axe_shield_cooldown = configuration.getInt(
             "axe_shield_cooldown",
@@ -153,29 +153,25 @@ public class Config {
             "shield",
             old_shield_old_stats,
             "Whether to make 'old shields' work like very early snapshot.",
-            "config.shield.old.stats.snapshot"
-        );
+            "config.shield.old.stats.snapshot");
         old_shield_enable = configuration.getBoolean(
             "old_shield_enable",
             "shield",
             old_shield_enable,
             "Enable old woollen colored shields",
-            "config.shield.old.enable"
-        );
+            "config.shield.old.enable");
         fix_gimbal_lock = configuration.getBoolean(
             "fix_gimbal_lock",
             "shield",
             fix_gimbal_lock,
             "Fix bug where looking straight up or down makes blocking impossible",
-            "config.shield.bug.gimbal.lock.fix"
-        );
+            "config.shield.bug.gimbal.lock.fix");
         enable_easter_egg = configuration.getBoolean(
             "enable_easter_egg",
             "shield",
             enable_easter_egg,
             "Enable a joke.",
-            "config.shield.easter_egg"
-        );
+            "config.shield.easter_egg");
 
         if (configuration.hasChanged()) {
             configuration.save();

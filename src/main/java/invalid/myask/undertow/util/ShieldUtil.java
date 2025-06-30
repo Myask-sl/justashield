@@ -16,7 +16,11 @@ import invalid.myask.undertow.item.ItemShield;
 import xonin.backhand.api.core.BackhandUtils;
 
 public class ShieldUtil {
-    public static final char[] hexadecimal_digits =  {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+    public static final char[] hexadecimal_digits = { '0', '1', '2', '3',
+                                                      '4', '5', '6', '7',
+                                                      '8', '9', 'A', 'B',
+                                                      'C', 'D', 'E', 'F' };
     public static Enchantment cleaving = null;
 
     public static void checkForCleaving() {

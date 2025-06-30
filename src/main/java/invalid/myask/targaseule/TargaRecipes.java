@@ -21,7 +21,6 @@ public class TargaRecipes {
                 GameRegistry.addRecipe(new OldShieldRecipe(i));
             }
         }
-        if (Config.enable_easter_egg)
-            GameRegistry.addRecipe(MissingShieldRecipe.instance);
+        if (Config.enable_easter_egg) GameRegistry.addRecipe(MissingShieldRecipe.instance);
     }
 }
