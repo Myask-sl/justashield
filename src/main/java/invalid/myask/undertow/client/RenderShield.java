@@ -209,9 +209,7 @@ public class RenderShield extends Render implements IItemRenderer {
                 GL11.glScalef(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
             }
         }
-        if (type != ItemRenderType.FIRST_PERSON_MAP) {
-            shareRender (item);
-        }
+        shareRender (item);
         GL11.glPopMatrix();
     }
 
