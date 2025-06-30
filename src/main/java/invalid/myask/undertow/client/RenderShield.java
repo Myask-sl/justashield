@@ -39,6 +39,8 @@ public class RenderShield extends Render implements IItemRenderer {
     //"square_top_right", "triangle_bottom", "triangle_top", "triangles_bottom", "triangles_top", "circle", "rhombus",
     //"border", "curly_border", "bricks", "gradient", "gradient_up",
     //"creeper", "skull", "flower", "mojang", "globe", "piglin", "flow", "guster"};
+    // Note: "mojang" is used for API compatibility with vanilla/EFR banner patterns.
+    // Mojang is TM Mojang. We are unaffiliated with Mojang.
 
 
     static { //initHeraldry()
