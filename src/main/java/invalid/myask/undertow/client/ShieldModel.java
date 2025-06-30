@@ -5,6 +5,7 @@ package invalid.myask.undertow.client;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
 
 public class ShieldModel extends ModelBase {
@@ -30,5 +31,20 @@ public class ShieldModel extends ModelBase {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
+    }
+    final static double LEFT = 2D / 64,
+        TOP = LEFT,
+        RIGHT = 12D / 64,
+        BOTTOM = 22D / 64;
+
+    public void paintShield(float scale) {
+        double x = 5 * scale,
+            y = 10 * scale;
+        Tessellator.instance.startDrawingQuads();
+        Tessellator.instance.addVertexWithUV(-x, -y, -1.0001,    TOP,  LEFT);
+        Tessellator.instance.addVertexWithUV( x, -y, -1.0001,    TOP, RIGHT);
+        Tessellator.instance.addVertexWithUV( x,  y, -1.0001, BOTTOM, RIGHT);
+        Tessellator.instance.addVertexWithUV(-x,  y, -1.0001, BOTTOM,  LEFT);
+        Tessellator.instance.draw();
     }
 }
