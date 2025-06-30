@@ -220,12 +220,11 @@ public class RenderShield extends Render implements IItemRenderer {
                             else tincture = 0;
                         }
                         else tincture = MapColor.getMapColorForBlockColored(colorIndex).colorValue;
-                        GL11.glColor3ub((byte)((tincture >> 16) & 0xFF), (byte)((tincture >> 8) & 0xFF), (byte)(tincture & 0xFF));
                         int i = entry.indexOf('.');
                         if (entry.length() == i + 1) i = -1;
                         pattern = i == -1 ? "base" : entry.substring(i + 1);
                         renderManager.renderEngine.bindTexture(heraldryTextures.get(pattern));
-                        bonk.paintShield(0.0625F);
+                        bonk.paintShield(0.0625F, tincture);
                     }
                 }
             }

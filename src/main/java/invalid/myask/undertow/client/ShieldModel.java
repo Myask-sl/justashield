@@ -37,14 +37,16 @@ public class ShieldModel extends ModelBase {
         RIGHT = 12D / 64,
         BOTTOM = 22D / 64;
 
-    public void paintShield(float scale) {
+    public void paintShield(float scale, int tincture) {
         double x = 5 * scale,
-            y = 10 * scale;
+            y = 10 * scale,
+            z = -1.0001 * scale;
         Tessellator.instance.startDrawingQuads();
-        Tessellator.instance.addVertexWithUV(-x, -y, -1.0001,    TOP,  LEFT);
-        Tessellator.instance.addVertexWithUV( x, -y, -1.0001,    TOP, RIGHT);
-        Tessellator.instance.addVertexWithUV( x,  y, -1.0001, BOTTOM, RIGHT);
-        Tessellator.instance.addVertexWithUV(-x,  y, -1.0001, BOTTOM,  LEFT);
+        Tessellator.instance.setColorOpaque((tincture >> 16) & 0xFF, (tincture >> 8) & 0xFF, tincture & 0xFF);
+        Tessellator.instance.addVertexWithUV(-x, -y, z,  LEFT,    TOP);
+        Tessellator.instance.addVertexWithUV( x, -y, z, RIGHT,    TOP);
+        Tessellator.instance.addVertexWithUV( x,  y, z, RIGHT, BOTTOM);
+        Tessellator.instance.addVertexWithUV(-x,  y, z,  LEFT, BOTTOM);
         Tessellator.instance.draw();
     }
 }
