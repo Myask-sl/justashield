@@ -40,7 +40,7 @@ public class ShieldModel extends ModelBase {
     public void paintShield(float scale, int tincture) {
         double x = 5 * scale,
             y = 10 * scale,
-            z = -1.0001 * scale;
+            z = -1 * scale - 0.0001;
         Tessellator.instance.startDrawingQuads();
         Tessellator.instance.setColorOpaque((tincture >> 16) & 0xFF, (tincture >> 8) & 0xFF, tincture & 0xFF);
         Tessellator.instance.addVertexWithUV(-x, -y, z,  LEFT,    TOP);

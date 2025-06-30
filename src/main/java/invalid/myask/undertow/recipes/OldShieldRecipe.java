@@ -30,12 +30,11 @@ public class OldShieldRecipe implements IRecipe {
         compound.setTag("tag", tag);
         output.setTagCompound(compound);
 
-        int stupidMetaInversion = 15 - colorIndex;
         baseRecipe = new ShapedOreRecipe(TargaItems.OLD_SHIELD,
             "CW ",
             "CWI",
             "CW ",
-            'C', new ItemStack(Blocks.wool, 1, stupidMetaInversion),
+            'C', new ItemStack(Blocks.wool, 1, colorIndex),
             'W', "plankWood",
             'I', "ingotIron");
     }
