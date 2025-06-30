@@ -225,7 +225,7 @@ public class RenderShield extends Render implements IItemRenderer {
                         int i = entry.indexOf('.');
                         if (entry.length() == i + 1) i = -1;
                         pattern = i == -1 ? "base" : entry.substring(i + 1);
-                        renderManager.renderEngine.bindTexture(heraldryTextures.get(pattern));
+                        this.bindTexture(heraldryTextures.get(pattern));
                         bonk.paintShield(0.0625F, tincture);
                     }
                 }
