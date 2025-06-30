@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -101,7 +102,10 @@ public class RenderShield extends Render implements IItemRenderer {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x, (float) y, (float) z);
         GL11.glScalef(ENTITY_SCALE, ENTITY_SCALE, ENTITY_SCALE);
-        bonk.render(entity, 0, 0, 0, 0, fracTick, 0.0625F);
+        if (entity instanceof EntityItem eItem && eItem.getEntityItem() != null && eItem.getEntityItem().getItem() instanceof ItemShield)
+            shareRender(eItem.getEntityItem());
+        else //fallback
+            bonk.render(entity, 0, 0, 0, 0, fracTick, 0.0625F);
         GL11.glPopMatrix();
     }
 
@@ -206,31 +210,35 @@ public class RenderShield extends Render implements IItemRenderer {
             }
         }
         if (type != ItemRenderType.FIRST_PERSON_MAP) {
-            bonk.bb_main.render(0.0625F);
-            if (item.getItem() instanceof ItemShield shield) {
-                List<String> heraldry = shield.getHeraldry(item);
-                if (heraldry != null && !heraldry.isEmpty()) {
-                    String entry = heraldry.get(0),
-                        pattern;
-                    char c = entry.charAt(0);
-                    int colorIndex = "0123456789ABCDEF?$".indexOf(c),
-                        tincture;
-                    if (colorIndex == -1) colorIndex = "0123456789abcdef?".indexOf(c);
-                    if (colorIndex >= 0 && colorIndex <= 17) {
-                        if (colorIndex == 17) {
-                            if (entry.length() >= 6) tincture = Integer.parseInt(heraldry.get(0).substring(1, 6), 16);
-                            else tincture = 0;
-                        }
-                        else tincture = MapColor.getMapColorForBlockColored(colorIndex).colorValue;
-                        int i = entry.indexOf('.');
-                        if (entry.length() == i + 1) i = -1;
-                        pattern = i == -1 ? "base" : entry.substring(i + 1);
-                        this.bindTexture(heraldryTextures.get(pattern));
-                        bonk.paintShield(0.0625F, tincture);
+            shareRender (item);
+        }
+        GL11.glPopMatrix();
+    }
+
+    void shareRender(ItemStack stack) {
+        bonk.bb_main.render(0.0625F);
+        if (stack.getItem() instanceof ItemShield shield) {
+            List<String> heraldry = shield.getHeraldry(stack);
+            if (heraldry != null && !heraldry.isEmpty()) {
+                String entry = heraldry.get(0),
+                    pattern;
+                char c = entry.charAt(0);
+                int colorIndex = "0123456789ABCDEF?$".indexOf(c),
+                    tincture;
+                if (colorIndex == -1) colorIndex = "0123456789abcdef?".indexOf(c);
+                if (colorIndex >= 0 && colorIndex <= 17) {
+                    if (colorIndex == 17) {
+                        if (entry.length() >= 6) tincture = Integer.parseInt(heraldry.get(0).substring(1, 6), 16);
+                        else tincture = 0;
                     }
+                    else tincture = MapColor.getMapColorForBlockColored(colorIndex).colorValue;
+                    int i = entry.indexOf('.');
+                    if (entry.length() == i + 1) i = -1;
+                    pattern = i == -1 ? "base" : entry.substring(i + 1);
+                    this.bindTexture(heraldryTextures.get(pattern));
+                    bonk.paintShield(0.0625F, tincture);
                 }
             }
         }
-        GL11.glPopMatrix();
     }
 }
