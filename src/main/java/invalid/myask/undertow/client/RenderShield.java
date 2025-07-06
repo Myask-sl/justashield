@@ -17,10 +17,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.IItemRenderer;
 
+import xonin.backhand.api.core.BackhandUtils;
+
 import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
 import invalid.myask.undertow.item.ItemShield;
 import invalid.myask.undertow.util.ShieldUtil;
+import invalid.myask.undertow.util.ModLoaded;
 
 public class RenderShield extends Render implements IItemRenderer {
 
@@ -101,7 +104,7 @@ public class RenderShield extends Render implements IItemRenderer {
         GL11.glTranslatef((float) x, (float) y, (float) z);
         GL11.glScalef(ENTITY_SCALE, ENTITY_SCALE, ENTITY_SCALE);
         if (entity instanceof EntityItem eItem && eItem.getEntityItem() != null && eItem.getEntityItem().getItem() instanceof ItemShield)
-            shareRender(eItem.getEntityItem());
+            shareRender(eItem.getEntityItem(), false);
         else // fallback
             bonk.render(entity, 0, 0, 0, 0, fracTick, 0.0625F);
         GL11.glPopMatrix();
@@ -147,6 +150,7 @@ public class RenderShield extends Render implements IItemRenderer {
             && item.getTagCompound().getBoolean("easter_egg")))) rL = QLY_MURREY_SABLE;
         GL11.glPushMatrix();
         this.bindTexture(rL);
+        boolean mirror = false;
         switch (type) {
             case INVENTORY -> {
                 GL11.glTranslated(INV_POS.xCoord, INV_POS.yCoord, INV_POS.zCoord);
@@ -207,11 +211,13 @@ public class RenderShield extends Render implements IItemRenderer {
                 GL11.glScalef(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
             }
         }
-        shareRender(item);
+        if (ModLoaded.isBackHand() && data.length >= 2 && data[1] instanceof EntityPlayer alex && item == BackhandUtils.getOffhandItem(alex))
+            mirror = true;
+        shareRender(item, mirror);
         GL11.glPopMatrix();
     }
 
-    void shareRender(ItemStack stack) {
+    void shareRender(ItemStack stack, boolean mirror) {
         bonk.bb_main.render(0.0625F);
         if (stack.getItem() instanceof ItemShield shield) {
             List<String> heraldry = shield.getHeraldry(stack);
@@ -232,7 +238,7 @@ public class RenderShield extends Render implements IItemRenderer {
                 if (entry.length() == i + 1) i = -1;
                 pattern = i == -1 ? "base" : entry.substring(i + 1);
                 this.bindTexture(heraldryTextures.get(pattern));
-                bonk.paintShield(0.0625F, tincture);
+                bonk.paintShield(0.0625F, tincture, mirror);
             }
         }
     }
