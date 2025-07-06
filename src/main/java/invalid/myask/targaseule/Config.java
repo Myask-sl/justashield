@@ -10,6 +10,7 @@ public class Config {
     public static boolean shield_knockback_enabled = true;
     public static boolean block_on_crouch = false;
     public static boolean prevent_block_if_other_hand_using = true;
+    public static boolean sword_block_lets_shield_block = true;
 
     public static float shield_default_melee_block = 1.0F; // 2F / 3F;
     public static float shield_default_ranged_block = 1.0F;
@@ -57,6 +58,12 @@ public class Config {
             prevent_block_if_other_hand_using,
             "Prevent block if other hand is using an item (vanilla)",
             "config.shield.block.if.other.hand.using");
+        sword_block_lets_shield_block = configuration.getBoolean(
+            "sword_block_lets_shield_block",
+            "shield",
+            sword_block_lets_shield_block,
+            "Let shield block if sword is in mainhand, even if 'prevent block if other hand using' true (sort of vanilla--shields and sword block never co-existed)",
+            "config.shield.block.if.sword.blocking");
 
         shield_default_melee_block = configuration.getFloat(
             "shield_default_melee_block",
