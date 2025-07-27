@@ -22,13 +22,11 @@ public class OldShieldRecipe implements IRecipe {
         this.colorIndex = colorIndex;
         this.output = new ItemStack(TargaItems.OLD_SHIELD);
         NBTTagCompound compound = new NBTTagCompound(),
-            tag = new NBTTagCompound(),
             display = new NBTTagCompound();
-        tag.setInteger("colorIndex", colorIndex);
+        compound.setInteger("colorIndex", colorIndex);
         display.setInteger("color", MapColor.getMapColorForBlockColored(colorIndex).colorValue);
 
-        tag.setTag("display", display);
-        compound.setTag("tag", tag);
+        compound.setTag("display", display);
         output.setTagCompound(compound);
 
         //int stupidMetaInversion = 15 - colorIndex;

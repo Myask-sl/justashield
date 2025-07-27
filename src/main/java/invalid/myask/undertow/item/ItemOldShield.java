@@ -27,12 +27,10 @@ public class ItemOldShield extends ItemShield {
         String resultingName = super.getUnlocalizedName(stack);
         NBTTagCompound nbt = stack.getTagCompound();
         if (nbt != null) {
-            if (nbt.getTag("tag") instanceof NBTTagCompound tag) {
-                if (tag.hasKey("colorIndex")) {
-                    int colorIndex = tag.getInteger("colorIndex");
-                    if (colorIndex >= 0 && colorIndex < field_150923_a.length)
-                        resultingName += "." + field_150923_a[15 - colorIndex];
-                }
+            if (nbt.hasKey("colorIndex")) {
+                int colorIndex = nbt.getInteger("colorIndex");
+                if (colorIndex >= 0 && colorIndex < field_150923_a.length)
+                    resultingName += "." + field_150923_a[15 - colorIndex];
             }
         }
         return resultingName;
@@ -44,10 +42,8 @@ public class ItemOldShield extends ItemShield {
         NBTTagCompound nbt = stack.getTagCompound();
         int colorIndex = 0xF; // white, you blankshield.
         if (nbt != null) {
-            if (nbt.getTag("tag") instanceof NBTTagCompound tag) {
-                if (tag.hasKey("colorIndex")) {
-                    colorIndex = tag.getInteger("colorIndex");
-                }
+            if (nbt.hasKey("colorIndex")) {
+                colorIndex = nbt.getInteger("colorIndex");
             }
         }
         if (colorIndex < 0 || colorIndex >= field_150923_a.length) colorIndex = 0xF;
