@@ -10,6 +10,7 @@ import net.minecraft.realms.RealmsMth;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
+import invalid.myask.undertow.compat.Wrappager;
 import invalid.myask.undertow.item.ItemShield;
 import invalid.myask.undertow.util.ShieldUtil;
 
@@ -65,6 +66,11 @@ public class TargaEvent {
                                 dotProduct = dX * lookVec.xCoord + dZ * lookVec.zCoord
                                     + (Config.shield_pitch_matters ? dY * lookVec.yCoord : 0);
                                 fromAhead = dotProduct >= 0;
+                            }
+                        }
+                        if (eds instanceof EntityDamageSourceIndirect indirSource && indirSource.isProjectile()) {
+                            if (indirSource.getSourceOfDamage() instanceof EntityArrow arrow) {
+                                fromAhead = fromAhead && !Wrappager.is.piercing(arrow);
                             }
                         }
                         if (fromAhead) { // within 90 degrees of facing, block
