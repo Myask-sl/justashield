@@ -22,13 +22,18 @@ public class ShieldUtil {
                                                       '8', '9', 'A', 'B',
                                                       'C', 'D', 'E', 'F' };
     public static Enchantment cleaving = null;
+    public static Enchantment piercing = null;
 
-    public static void checkForCleaving() {
+    public static void checkForCleavingAndPiercing() {
         for (Enchantment e : Enchantment.enchantmentsList) {
             if (e == null) continue;
-            if (e.getName() != null && e.getName().contains("cleaving")) {
-                cleaving = e;
-                return;
+            if (e.getName() != null) {
+                if (e.getName().contains("cleaving")) {
+                    cleaving = e;
+                } else if (e.getName().contains("piercing")) {
+                    piercing = e;
+                }
+                if (cleaving != null && piercing != null) break;
             }
         }
     }

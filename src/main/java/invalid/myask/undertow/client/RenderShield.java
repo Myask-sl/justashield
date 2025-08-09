@@ -22,8 +22,8 @@ import xonin.backhand.api.core.BackhandUtils;
 import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
 import invalid.myask.undertow.item.ItemShield;
-import invalid.myask.undertow.util.ShieldUtil;
 import invalid.myask.undertow.util.ModLoaded;
+import invalid.myask.undertow.util.ShieldUtil;
 
 public class RenderShield extends Render implements IItemRenderer {
 

@@ -1,8 +1,8 @@
 package invalid.myask.targaseule;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemDye;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 import invalid.myask.undertow.recipes.MissingShieldRecipe;
 import invalid.myask.undertow.recipes.OldShieldRecipe;
