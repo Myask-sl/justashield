@@ -40,14 +40,14 @@ public class ShieldUtil {
 
     public static boolean isUsingShield(EntityPlayer alex) {
         if (alex.isUsingItem()) {
-            if (alex.getItemInUse().getItem() instanceof ItemShield)
+            if (alex.getCurrentEquippedItem().getItem() instanceof ItemShield)
                 return true;
             if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
                 && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
                 && (!Config.prevent_block_if_other_hand_using ||
                 (Config.sword_block_lets_shield_block &&
-                        alex.getItemInUse().getItemUseAction() == EnumAction.block
-                        && alex.getItemInUse().getItem() instanceof ItemSword))) return true;
+                        alex.getCurrentEquippedItem().getItemUseAction() == EnumAction.block
+                        && alex.getCurrentEquippedItem().getItem() instanceof ItemSword))) return true;
         }
 
         if (Config.block_on_crouch && alex.isSneaking()) {
@@ -60,8 +60,8 @@ public class ShieldUtil {
                 && (!Config.prevent_block_if_other_hand_using ||
                 (!alex.isUsingItem() ||
                     (Config.sword_block_lets_shield_block &&
-                        alex.getItemInUse().getItemUseAction() == EnumAction.block
-                        && alex.getItemInUse().getItem() instanceof ItemSword)))) {
+                        alex.getCurrentEquippedItem().getItemUseAction() == EnumAction.block
+                        && alex.getCurrentEquippedItem().getItem() instanceof ItemSword)))) {
                 return true;
             }
         }
@@ -70,14 +70,14 @@ public class ShieldUtil {
 
     public static ItemStack getShieldInUse(EntityPlayer alex) {
         if (alex.isUsingItem()) {
-            if (alex.getItemInUse().getItem() instanceof ItemShield)
-                return alex.getItemInUse();
+            if (alex.getCurrentEquippedItem().getItem() instanceof ItemShield)
+                return alex.getCurrentEquippedItem();
             if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
                 && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
                 && (!Config.prevent_block_if_other_hand_using ||
                 (Config.sword_block_lets_shield_block &&
-                    alex.getItemInUse().getItemUseAction() == EnumAction.block
-                        && alex.getItemInUse().getItem() instanceof ItemSword)))
+                    alex.getCurrentEquippedItem().getItemUseAction() == EnumAction.block
+                        && alex.getCurrentEquippedItem().getItem() instanceof ItemSword)))
                 return BackhandUtils.getOffhandItem(alex);
         }
         if (Config.block_on_crouch && alex.isSneaking()) {
