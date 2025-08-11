@@ -3,7 +3,7 @@
 	"modList": [{
 		"modid": "${modId}",
 		"name": "${modName}",
-		"description": "Just a vanilla shield. Incompatible with Undertow. No mixins.",
+		"description": "Just a vanilla shield. Incompatible with Undertow. Requires Unimixins.",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
 		"url": "",

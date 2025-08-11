@@ -7,6 +7,6 @@ import invalid.myask.vindicateandspendicate.api.IPierceArrow;
 public class WrappagerLoaded extends Wrappager {
     @Override
     public boolean piercing(EntityArrow arrow) {
-        return ((IPierceArrow)arrow).takesAnIllage$getPierces() > 0;
+        return ((IPierceArrow)arrow).vindicateAndSpendicate$getPierces() > 0;
     }
 }

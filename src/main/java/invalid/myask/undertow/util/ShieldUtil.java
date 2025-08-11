@@ -6,14 +6,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 
 import invalid.myask.targaseule.Config;
+import invalid.myask.undertow.compat.BackhandWraps;
+import invalid.myask.undertow.ducks.IPlayerItemUser;
 import invalid.myask.undertow.item.ItemShield;
-import xonin.backhand.api.core.BackhandUtils;
 
 public class ShieldUtil {
 
@@ -43,54 +45,30 @@ public class ShieldUtil {
         return EnchantmentHelper.getEnchantmentLevel(cleaving.effectId, axe);
     }
 
-    public static boolean isUsingShield(EntityPlayer alex) {
-        if (alex.isUsingItem()) {
-            if (alex.getCurrentEquippedItem().getItem() instanceof ItemShield)
-                return true;
-            if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
-                && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
-                && (!Config.prevent_block_if_other_hand_using ||
-                (Config.sword_block_lets_shield_block &&
-                        alex.getCurrentEquippedItem().getItemUseAction() == EnumAction.block
-                        && alex.getCurrentEquippedItem().getItem() instanceof ItemSword))) return true;
-        }
+    public static Item nullguardGetItem(ItemStack in) {
+        return (in != null) ? in.getItem() : null;
+    }
 
-        if (Config.block_on_crouch && alex.isSneaking()) {
-            if (alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield
-                && (!ModLoaded.isBackHand() || alex.inventory.currentItem != BackhandUtils.getOffhandSlot(alex)))
-                // because backhand sets currentItem to backhandslot while rendering it
-                return true;
-            if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
-                && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
-                && (!Config.prevent_block_if_other_hand_using ||
-                (!alex.isUsingItem() ||
-                    (Config.sword_block_lets_shield_block &&
-                        alex.getCurrentEquippedItem().getItemUseAction() == EnumAction.block
-                        && alex.getCurrentEquippedItem().getItem() instanceof ItemSword)))) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean isUsingShield(EntityPlayer alex) {
+        return getShieldInUse(alex) != null;
     }
 
     public static ItemStack getShieldInUse(EntityPlayer alex) {
         if (alex.isUsingItem()) {
-            if (alex.getCurrentEquippedItem().getItem() instanceof ItemShield)
-                return alex.getCurrentEquippedItem();
-            if (ModLoaded.isBackHand() && (BackhandUtils.getOffhandItem(alex) != null
-                && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
+            if (nullguardGetItem(((IPlayerItemUser)alex).undertow$getItemInUse()) instanceof ItemShield)
+                return ((IPlayerItemUser)alex).undertow$getItemInUse();
+            if (ModLoaded.isBackHand() && (nullguardGetItem(BackhandWraps.passthrough.getOffHandItem(alex)) instanceof ItemShield)
                 && (!Config.prevent_block_if_other_hand_using ||
                 (Config.sword_block_lets_shield_block &&
-                    alex.getCurrentEquippedItem().getItemUseAction() == EnumAction.block
-                        && alex.getCurrentEquippedItem().getItem() instanceof ItemSword)))
-                return BackhandUtils.getOffhandItem(alex);
+                    ((IPlayerItemUser)alex).undertow$getItemInUse().getItemUseAction() == EnumAction.block
+                        && nullguardGetItem(((IPlayerItemUser)alex).undertow$getItemInUse()) instanceof ItemSword)))
+                return BackhandWraps.passthrough.getOffHandItem(alex);
         }
         if (Config.block_on_crouch && alex.isSneaking()) {
-            if ((alex.getHeldItem() != null && alex.getHeldItem().getItem() instanceof ItemShield))
+            if (nullguardGetItem(alex.getHeldItem()) instanceof ItemShield)
                 return alex.getHeldItem();
-            if (ModLoaded.isBackHand() && BackhandUtils.getOffhandItem(alex) != null
-                && BackhandUtils.getOffhandItem(alex).getItem() instanceof ItemShield)
-                return BackhandUtils.getOffhandItem(alex);
+            if (ModLoaded.isBackHand() && nullguardGetItem(BackhandWraps.passthrough.getOffHandItem(alex)) instanceof ItemShield)
+                return BackhandWraps.passthrough.getOffHandItem(alex);
         }
         return null;
     }

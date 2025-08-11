@@ -17,10 +17,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.IItemRenderer;
 
-import xonin.backhand.api.core.BackhandUtils;
-
 import invalid.myask.targaseule.Config;
 import invalid.myask.targaseule.TargaSeule;
+import invalid.myask.undertow.compat.BackhandWraps;
 import invalid.myask.undertow.item.ItemShield;
 import invalid.myask.undertow.util.ModLoaded;
 import invalid.myask.undertow.util.ShieldUtil;
@@ -211,7 +210,8 @@ public class RenderShield extends Render implements IItemRenderer {
                 GL11.glScalef(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
             }
         }
-        if (ModLoaded.isBackHand() && data.length >= 2 && data[1] instanceof EntityPlayer alex && item == BackhandUtils.getOffhandItem(alex))
+        if (ModLoaded.isBackHand() && data.length >= 2 && data[1] instanceof EntityPlayer alex
+            && item == BackhandWraps.passthrough.getOffHandItem(alex))
             mirror = true;
         shareRender(item, mirror);
         GL11.glPopMatrix();

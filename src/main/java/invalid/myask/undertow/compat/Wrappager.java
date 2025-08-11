@@ -8,7 +8,7 @@ public class Wrappager {
     public boolean piercing(EntityArrow arrow) {
         if (Loader.isModLoaded("takes_an_illage")) is = new WrappagerLoaded();
         else is = new Unloaded();
-        return is.piercing();
+        return is.piercing(arrow);
     }
     public static class Unloaded extends Wrappager {
         @Override
