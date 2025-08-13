@@ -44,7 +44,6 @@ public class ShieldModel extends ModelBase {
         Tessellator.instance.startDrawingQuads();
         if (tincture != -1)
             Tessellator.instance.setColorOpaque((tincture >> 16) & 0xFF, (tincture >> 8) & 0xFF, tincture & 0xFF);
-        Tessellator.instance.setNormal(0, 0, -1);
         Tessellator.instance.addVertexWithUV(-x,  y, z, RIGHT,    TOP);
         Tessellator.instance.addVertexWithUV( x,  y, z,  LEFT,    TOP);
         Tessellator.instance.addVertexWithUV( x, -y, z,  LEFT, BOTTOM);
