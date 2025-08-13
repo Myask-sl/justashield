@@ -56,7 +56,7 @@ public class ShieldUtil {
     public static ItemStack getShieldInUse(EntityPlayer alex) {
         if (alex.isUsingItem()) {
             if (nullguardGetItem(((IPlayerItemUser)alex).undertow$getItemInUse()) instanceof ItemShield)
-                return ((IPlayerItemUser)alex).undertow$getItemInUse();
+                return ((IPlayerItemUser)alex).undertow$getItemInUse(); //note this also includes offhand in use
             if (ModLoaded.isBackHand() && (nullguardGetItem(BackhandWraps.passthrough.getOffHandItem(alex)) instanceof ItemShield)
                 && (!Config.prevent_block_if_other_hand_using ||
                 (Config.sword_block_lets_shield_block &&
