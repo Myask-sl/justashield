@@ -20,7 +20,7 @@ public abstract class MixinEntityPlayer_fakeGetItemInUse extends EntityLivingBas
     @Shadow
     private int itemInUseCount; //countDOWN
     @Shadow
-    public boolean isUsingItem() {return false;};
+    public boolean isUsingItem() {return false;}
 
     @Unique
     public ItemStack undertow$getItemInUse() {
