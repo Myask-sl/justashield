@@ -25,7 +25,7 @@ public abstract class MixinEntityPlayer_fakeGetItemInUse extends EntityLivingBas
     @Unique
     public ItemStack undertow$getItemInUse() {
         ItemStack possible = BackhandWraps.passthrough.getOffHandItem((EntityPlayer)(Object)this);
-        if (possible != null) return possible;
+        if (possible != null && BackhandWraps.passthrough.isOffhandItemInUse((EntityPlayer)(Object)this)) return possible;
         return itemInUse;
     }
     @Unique
