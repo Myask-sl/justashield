@@ -46,8 +46,11 @@ public class ItemShield extends Item implements IItemEntityRendered {
 
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World worldIn, EntityPlayer player) {
-        if (ShieldUtil.disabledUntil(stack, player) <= worldIn.getTotalWorldTime())
+//        if (ShieldUtil.disabledUntil(stack, player) <= worldIn.getTotalWorldTime())
+        {
             player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+            ShieldUtil.disableFor(getBaseWarmup(), stack, player);
+        }
         return super.onItemRightClick(stack, worldIn, player);
     }
 
