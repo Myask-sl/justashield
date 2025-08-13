@@ -1,6 +1,5 @@
 package invalid.myask.targaseule;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -20,9 +19,8 @@ public class CommonProxy {
 
         GameRegistry.registerItem(TargaItems.SHIELD, "shield", TargaSeule.MODID);
         GameRegistry.registerItem(TargaItems.OLD_SHIELD, "old_shield", TargaSeule.MODID);
-        CreativeTabs tab = Config.use_vanilla_tabs ? CreativeTabs.tabCombat : TargaItems.TAB;
-        TargaItems.SHIELD.setCreativeTab(tab);
-        TargaItems.OLD_SHIELD.setCreativeTab(tab);
+        TargaItems.SHIELD.setCreativeTab(TargaItems.TAB);
+        TargaItems.OLD_SHIELD.setCreativeTab(TargaItems.TAB);
 
         MinecraftForge.EVENT_BUS.register(TargaEvent.instance);
     }
