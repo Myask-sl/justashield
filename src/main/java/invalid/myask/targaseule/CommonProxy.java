@@ -19,9 +19,10 @@ public class CommonProxy {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
         GameRegistry.registerItem(TargaItems.SHIELD, "shield", TargaSeule.MODID);
-        TargaItems.SHIELD.setCreativeTab(CreativeTabs.tabCombat);
         GameRegistry.registerItem(TargaItems.OLD_SHIELD, "old_shield", TargaSeule.MODID);
-        TargaItems.OLD_SHIELD.setCreativeTab(CreativeTabs.tabCombat);
+        CreativeTabs tab = Config.use_vanilla_tabs ? CreativeTabs.tabCombat : TargaItems.TAB;
+        TargaItems.SHIELD.setCreativeTab(tab);
+        TargaItems.OLD_SHIELD.setCreativeTab(tab);
 
         MinecraftForge.EVENT_BUS.register(TargaEvent.instance);
     }

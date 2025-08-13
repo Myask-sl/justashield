@@ -31,6 +31,8 @@ public class Config {
     public static boolean old_shield_enable = true;
     public static boolean enable_easter_egg = true;
 
+    public static boolean use_vanilla_tabs = false;
+
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
 
@@ -179,6 +181,14 @@ public class Config {
             enable_easter_egg,
             "Enable a joke.",
             "config.shield.easter_egg");
+
+        use_vanilla_tabs = configuration.getBoolean(
+            "use_vanilla_tabs",
+            "shield",
+            use_vanilla_tabs,
+            "Put shields under Combat tab instead of their own.",
+            "config.shield.tab.vanilla"
+        );
 
         if (configuration.hasChanged()) {
             configuration.save();
