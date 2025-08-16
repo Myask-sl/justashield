@@ -1,3 +1,5 @@
+itemGroup.justashield=只是个盾牌
+
 item.shield.name=盾牌
 item.shield.white.name=旧白色盾牌
 item.shield.orange.name=旧橙色盾牌
@@ -15,5 +17,7 @@ item.shield.brown.name=旧棕色盾牌
 item.shield.green.name=旧绿色盾牌
 item.shield.red.name=旧红色盾牌
 item.shield.black.name=旧黑色盾牌
+
+item.shield.generic.name=旧羊毛盾牌
 
 tooltips.shield.easter_egg=四分纹章紫配黑，此盾本非旗帜也
