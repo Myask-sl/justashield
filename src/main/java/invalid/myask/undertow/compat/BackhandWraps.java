@@ -5,24 +5,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public class BackhandWraps {
-    public static BackhandWraps passthrough = new BackhandWraps();
-    private void loadMod() {
+    public static BackhandWraps passthrough;
+    static {
         if (Loader.isModLoaded("backhand")) passthrough = new BackhandLoaded();
         else passthrough = new Unloaded();
     }
 
     public ItemStack getOffHandItem(EntityPlayer herobrine) {
-        loadMod();
         return passthrough.getOffHandItem(herobrine);
     }
 
     public boolean isOffhandItemInUse(EntityPlayer herobrine) {
-        loadMod();
         return passthrough.isOffhandItemInUse(herobrine);
     }
 
     public boolean isUsingOffhand(EntityPlayer herobrine) {
-        loadMod();
         return passthrough.isUsingOffhand(herobrine);
     }
 

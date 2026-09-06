@@ -5,7 +5,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.client.MinecraftForgeClient;
 
-import invalid.myask.targaseule.client.ShowCrouchBlockEvent;
+import invalid.myask.targaseule.client.BlockAnimTweakEventHandler;
 import invalid.myask.undertow.client.RenderShield;
 
 @SuppressWarnings("unused")
@@ -21,6 +21,6 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(TargaItems.SHIELD, RenderShield.instance);
         MinecraftForgeClient.registerItemRenderer(TargaItems.OLD_SHIELD, RenderShield.instance);
 
-        MinecraftForge.EVENT_BUS.register(ShowCrouchBlockEvent.instance);
+        MinecraftForge.EVENT_BUS.register(BlockAnimTweakEventHandler.instance);
     }
 }

@@ -32,6 +32,7 @@ public class Config {
     public static boolean enable_easter_egg = true;
 
     public static boolean use_vanilla_tabs = false;
+    public static boolean no_sword_block_tilt_when_shield_block = true;
 
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
@@ -188,6 +189,14 @@ public class Config {
             use_vanilla_tabs,
             "Put shields under Combat tab instead of their own.",
             "config.shield.tab.vanilla"
+        );
+
+        no_sword_block_tilt_when_shield_block = configuration.getBoolean(
+            "no_sword_block_tilt_when_shield_block",
+            "shield",
+            no_sword_block_tilt_when_shield_block,
+            "Don't tilt sword as though it's blocking when a shield is blocking",
+            "config.shield.sword.alsoblock.hide"
         );
 
         if (configuration.hasChanged()) {

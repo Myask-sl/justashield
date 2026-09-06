@@ -5,12 +5,5 @@
   "package": "invalid.myask.targaseule.mixins",
   "refmap": "mixins.targaseule.refmap.json",
   "target": "@env(DEFAULT)",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "MixinEntityPlayer_fakeGetItemInUse"
-  ],
-  "client": [
-    "MixinRenderPlayer_dontSwordBlockMove"
-  ],
-  "server": []
+  "compatibilityLevel": "JAVA_8"
 }
