@@ -3,17 +3,12 @@ package invalid.myask.undertow.compat;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.projectile.EntityArrow;
 
-public class Wrappager {
-    public static Wrappager is = new Wrappager();
-    public boolean piercing(EntityArrow arrow) {
-        if (Loader.isModLoaded("takes_an_illage")) is = new WrappagerLoaded();
-        else is = new Unloaded();
-        return is.piercing(arrow);
+public abstract class Wrappager {
+    public static Wrappager is;
+    static {
+        if (Loader.isModLoaded("vindicateandspendicate")) is = new WrappagerLoaded();
+        else is = new WrappagerUnloaded();
     }
-    public static class Unloaded extends Wrappager {
-        @Override
-        public boolean piercing(EntityArrow arrow) {
-            return false;
-        }
-    }
+
+    public abstract boolean piercing(EntityArrow arrow);
 }

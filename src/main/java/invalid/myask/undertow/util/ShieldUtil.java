@@ -89,7 +89,9 @@ public class ShieldUtil {
      * @param vic    got hit
      * @return Whether it set a new time.
      */
+    //TODO: config: disable time on entity instead of itemstack?
     public static boolean disableFor(long time, ItemStack shield, EntityLivingBase vic) {
+        if (time <= 0) return false;
         NBTTagCompound compound = shield.getTagCompound();
         long newEnd = vic.worldObj.getTotalWorldTime() + time;
         if (compound == null) {

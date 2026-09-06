@@ -32,7 +32,7 @@ public class Config {
     public static boolean enable_easter_egg = true;
 
     public static boolean use_vanilla_tabs = false;
-    public static boolean no_sword_block_tilt_when_shield_block = true;
+    public static boolean no_sword_block_tilt_when_shield_block = false;
 
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);

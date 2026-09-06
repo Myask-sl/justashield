@@ -4,37 +4,16 @@ import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class BackhandWraps {
+public abstract class BackhandWraps {
     public static BackhandWraps passthrough;
     static {
         if (Loader.isModLoaded("backhand")) passthrough = new BackhandLoaded();
-        else passthrough = new Unloaded();
+        else passthrough = new BackHandUnloaded();
     }
 
-    public ItemStack getOffHandItem(EntityPlayer herobrine) {
-        return passthrough.getOffHandItem(herobrine);
-    }
+    public abstract ItemStack getOffHandItem(EntityPlayer herobrine);
 
-    public boolean isOffhandItemInUse(EntityPlayer herobrine) {
-        return passthrough.isOffhandItemInUse(herobrine);
-    }
+    public abstract boolean isOffhandItemInUse(EntityPlayer herobrine);
 
-    public boolean isUsingOffhand(EntityPlayer herobrine) {
-        return passthrough.isUsingOffhand(herobrine);
-    }
-
-    public static class Unloaded extends BackhandWraps {
-        @Override
-        public ItemStack getOffHandItem(EntityPlayer roadhog) {
-            return null;
-        }
-        @Override
-        public boolean isOffhandItemInUse(EntityPlayer roadhog) {
-            return false;
-        }
-        @Override
-        public boolean isUsingOffhand(EntityPlayer roadhog) {
-            return false;
-        }
-    }
+    public abstract boolean isUsingOffhand(EntityPlayer herobrine);
 }
